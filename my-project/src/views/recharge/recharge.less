@@ -1,0 +1,145 @@
+body{
+    background: #f5f5f9;
+}
+.rechargebox{
+    margin-top: 0.3rem;
+    .cont1{
+        width: 6.92rem;
+        height: 1.76rem;
+        border-radius: 0.3rem;
+        margin: 0 auto;
+        background: -webkit-linear-gradient(left,#fb4a37, #fdbe81 ); /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(right,  #fb4a37, #fdbe81); /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient(right,  #fb4a37, #fdbe81); /* Firefox 3.6 - 15 */
+        background: linear-gradient(to right,  #fb4a37, #fdbe81); /* 标准的语法 */
+        display:-webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        .txtleft{
+            padding-left: 0.25rem;
+            box-sizing: border-box;
+            padding-top: 0.4rem;
+            text-align: left;
+            box-flex:1;
+            -webkit-box-flex:1;
+            -moz-box-flex:1;
+            flex:1;
+            -webkit-flex:1;
+            h1{
+                font-size: 0.36rem;
+                color: #fff;
+            }
+            p{
+                font-size: 0.24rem;
+                color: #fff;
+            }
+        }
+        .txtright{
+            box-sizing: border-box;
+            text-align: right;
+            padding-right: 0.25rem;
+            padding-top: 0.15rem;
+            box-flex:1;
+            -webkit-box-flex:1;
+            -moz-box-flex:1;
+            flex:1;
+            -webkit-flex:1;
+            h1{
+                font-size: 0.3rem;
+                color: #fff;
+                span{
+                    font-size: 0.54rem;
+                }
+            }
+            p{
+                font-size: 0.24rem;
+                color: #fff;
+            }
+        }
+    }
+    .cont2{
+        h1{
+            font-size: 0.36rem;
+            color: #333;
+            text-align: center;
+            padding: 0.35rem 0;
+            box-sizing: border-box;
+            font-weight: bold;
+        }
+    }
+    .cont3{
+        display:-webkit-box;
+        display: -moz-box;
+        display: -ms-flexbox;
+        display: -webkit-flex;
+        display: flex;
+        padding: 0 0.3rem;
+        .cont3box{
+            width: 2.08rem;
+            background: #fff;
+            border-radius: 0.3rem;
+            margin: 0.1rem;
+            text-align: center;
+            box-flex:1;
+            -webkit-box-flex:1;
+            -moz-box-flex:1;
+            flex:1;
+            -webkit-flex:1;
+            position: relative;
+            &:nth-of-type(2){
+                border: 1px solid #ff6f00;
+                p{
+                    color: #666;
+                }
+                span{
+                    width: 0.62rem;
+                    height: 0.62rem;
+                    background: #ff6f00;
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    transform:rotate(-45deg);
+                    -ms-transform:rotate(-45deg); 	/* IE 9 */
+                    -moz-transform:rotate(-45deg); 	/* Firefox */
+                    -webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
+                    -o-transform:rotate(-45 deg); 	/* Opera */
+                    img{
+                        width: 0.27rem;
+                        height: 0.21rem;
+                        display: inline-block;
+                    }
+                }
+            }
+            h1{
+                i{
+                    font-size: 0.36rem;
+                    color: #ff6f00;
+                }
+                font-size: 0.24rem;
+                color: #666;
+            }
+            p{
+                font-size: 0.2rem;
+                color: #ccc;
+            }
+        }
+    }
+    .footer{
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        background: -webkit-linear-gradient(left,#fdbe81,#fb4a37  ); /* Safari 5.1 - 6.0 */
+        background: -o-linear-gradient(right, #fdbe81,#fb4a37); /* Opera 11.1 - 12.0 */
+        background: -moz-linear-gradient(right, #fdbe81,#fb4a37); /* Firefox 3.6 - 15 */
+        background: linear-gradient(to right,  #fdbe81,#fb4a37); /* 标准的语法 */
+        p{
+            font-size: 0.36rem;
+            color: #fff;
+            text-align: center;
+            padding: 0.25rem 0;
+        }
+    }
+}
