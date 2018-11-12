@@ -17,14 +17,14 @@
                 <div class="tat_left"><img src="../../../static/image/index/images/icon2.png" alt=""></div>
                 <div class="tat_right">
                     <p>已为XXXXX个用户划拨互助金</p>
-                    <h1>520,000.00</h1>
+                    <h1>{{getOrderNum}}</h1>
                 </div>
             </div>
             <div class="tat">
                 <div class="tat_left"><img src="../../../static/image/index/images/icon3.png" alt=""></div>
                 <div class="tat_right">
                     <p>已拥有会员</p>
-                    <h1>8000,000.00</h1>
+                    <h1>{{hadMemNum}}</h1>
                 </div>
             </div>
             
@@ -90,31 +90,49 @@
 <script>
 require('./index.less');
 import { Toast } from "mint-ui";
-import { getUserInfoByInviteCode} from '@/api/index';
+import { getMemberNum,getPaidOrderNum} from '@/api/index';
 export default {
     name:'index',
     created(){
-        this.inviteInfo();
+        this.getMemberNumFun();
+        this.getPaidOrderNumFun();
+    },
+    data(){
+        return {
+            hadMemNum:0,
+            getOrderNum:0
+        }
     },
     methods:{
-         inviteInfo(){
-           Toast('111');
+         getMemberNumFun(){
           
-            getUserInfoByInviteCode().then(res => {
+            getMemberNum().then(res => {
                 let result=res.data;
-                if(result.code==0){
-                    this.invitePhone=result.data.mobile_phone;
-                    this.btcPrice=result.data.btc_cny_price;
+                if(result.status==0){
+                    this.hadMemNum=result.data.hadMemNum;
                 }else{
                     Toast(result.message);
                 }
-                this.regisStatus=true;
+             
             
             }).catch(err => {
                 Toast('网络错误，请刷新重试');
-                this.regisStatus=true;
             })
         },
+        getPaidOrderNumFun(){
+            getPaidOrderNum().then(res => {
+                let result=res.data;
+                if(result.status==0){
+                    this.getOrderNum=result.data.getOrderNum;
+                }else{
+                    Toast(result.message);
+                }
+             
+            
+            }).catch(err => {
+                Toast('网络错误，请刷新重试');
+            })
+        }
     },
 }
 </script>

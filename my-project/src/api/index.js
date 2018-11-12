@@ -1,20 +1,20 @@
 import request from '@/utils/request'
 
-//获取用户的邀请码
-export function getInviteCode() {
+//总注册用户数
+export function getMemberNum() {
     return request({
-      url: '/invite/getInviteCode',
+      url: '/rest/getMemberNum',
       method: 'get',
     })
   }
 
 
-//根据邀请码获取用户
-export function getUserInfoByInviteCode(data) {
+  //总赔付数
+export function getPaidOrderNum() {
   return request({
-    url: '/invite/getUserInfoByInviteCode',
+    url: '/rest/getPaidOrderNum',
     method: 'get',
-    params: data
   })
 }
-  
+
+

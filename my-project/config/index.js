@@ -18,13 +18,6 @@ module.exports = {
           '^/coin': ''
         }
       },
-      '/redpack': {
-        target: 'http://optool.coinopentest.com/',
-        changeOrigin: true,
-        pathRewrite: {
-          '^/redpack': ''
-        }
-      }
     },
 
     // Various Dev Server settings

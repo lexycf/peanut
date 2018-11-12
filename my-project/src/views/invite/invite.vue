@@ -10,7 +10,20 @@
             <div class="cont3">
                 <p>你可以邀请</p>
             </div>
-            <div class="cont4"></div>
+            <div class="cont4">
+                <div class="conts">
+                    <img src="../../../static/image/invite/icon1.png" alt="">
+                    <span>家人</span>
+                </div>
+                <div class="conts">
+                    <img src="../../../static/image/invite/icon2.png" alt="">
+                    <span>好友</span>
+                </div>
+                <div class="conts">
+                    <img src="../../../static/image/invite/icon3.png" alt="">
+                    <span>同事</span>
+                </div>
+            </div>
         </div>
         <div class="footer">
             <p>立刻邀请</p>

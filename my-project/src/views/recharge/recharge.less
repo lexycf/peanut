@@ -79,7 +79,7 @@ body{
         .cont3box{
             width: 2.08rem;
             background: #fff;
-            border-radius: 0.3rem;
+            border-radius: 0.34rem;
             margin: 0.1rem;
             text-align: center;
             box-flex:1;
@@ -88,30 +88,26 @@ body{
             flex:1;
             -webkit-flex:1;
             position: relative;
-            &:nth-of-type(2){
+            &.active{
                 border: 1px solid #ff6f00;
+            }
+            span{
+                width: 0.62rem;
+                height: 0.62rem;
+                display: block;
+                position: absolute;
+                top: 0;
+                right: 0;
+                background:url('../../../static/image/recharge/dui.png') no-repeat;
+                background-size:100%;
+               
+            }
+            &:nth-of-type(2){
+               
                 p{
                     color: #666;
                 }
-                span{
-                    width: 0.62rem;
-                    height: 0.62rem;
-                    background: #ff6f00;
-                    display: block;
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    transform:rotate(-45deg);
-                    -ms-transform:rotate(-45deg); 	/* IE 9 */
-                    -moz-transform:rotate(-45deg); 	/* Firefox */
-                    -webkit-transform:rotate(-45deg); /* Safari 和 Chrome */
-                    -o-transform:rotate(-45 deg); 	/* Opera */
-                    img{
-                        width: 0.27rem;
-                        height: 0.21rem;
-                        display: inline-block;
-                    }
-                }
+                
             }
             h1{
                 i{
