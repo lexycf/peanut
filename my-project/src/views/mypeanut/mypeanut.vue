@@ -2,7 +2,7 @@
     <div class="mypeanutbox">
         <div class="cont1">
             <div class="cont1_top">
-                <div class="top_left"><h1>账户余额<i>1</i>元</h1></div>
+                <div class="top_left"><h1>账户余额<i>{{balance}}</i>元</h1></div>
                 <div class="top_right">申请互助金</div>
             </div>
             <div class="cont1_bottom">
@@ -25,7 +25,7 @@
                 <h1> 本月完成任务充满互助能量</h1>
             </div>
             <div class="cont2_mid">
-                <div class="midbox"><p>70%</p></div>
+                <div class="midbox"><p v-bind:style="{ width: percent+ '%' }">{{percent}}%</p></div>
             </div>
             <div class="cont2_bottom">
                 <p>可抵互助金，能量为0时互助计划终止</p>
@@ -49,8 +49,41 @@
 </template>
 <script>
 require('./mypeanut.less');
+import { Toast } from "mint-ui";
+import { getBalance} from '@/api/user';
 export default {
-    name:'mypeanut'
+    name:'mypeanut',
+    created(){
+        this.getBalanceFun();
+        this.defaultFun();
+    },
+    data(){
+        return {
+            balance:0,
+            percent:10
+           
+        }
+    },
+    methods:{
+        defaultFun(){
+            
+        },
+        
+         getBalanceFun(){
+            getBalance().then(res => {
+                let result=res.data;
+                if(result.status==0){
+                    this.balance=result.data.balance;
+                }else{
+                    Toast(result.message);
+                }
+             
+            
+            }).catch(err => {
+                Toast('网络错误，请刷新重试');
+            })
+        },
+    }
 }
 </script>
 
