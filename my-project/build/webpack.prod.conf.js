@@ -1,5 +1,6 @@
 'use strict'
 const path = require('path')
+const fs = require('fs')
 const utils = require('./utils')
 const webpack = require('webpack')
 const config = require('../config')
@@ -11,9 +12,24 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 
-const env = process.env.NODE_ENV === 'testing'
-  ? require('../config/test.env')
-  : require('../config/prod.env')
+function copyFile(src, dist) {
+  fs.writeFileSync(dist, fs.readFileSync(src));
+}
+
+const env = require('../config/' + process.env.env_config + '.env')
+var _WS_ENV_orgFileName = './src/api/serverPath.'+process.env.env_config+'.js';
+
+fs.unlink('./src/api/serverPath.js',function(e){
+  if(e){
+    console.log('delete file ' + _WS_ENV_orgFileName + ' faild !');
+    console.log(e)
+  }
+  else
+  {
+    copyFile(_WS_ENV_orgFileName, './src/api/serverPath.js')
+    console.log('copy file ' + _WS_ENV_orgFileName + ' success !');
+  }
+})
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {

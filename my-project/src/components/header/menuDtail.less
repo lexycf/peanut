@@ -1,0 +1,50 @@
+.menuDetailBox{
+    width:2.4rem;
+    position: absolute;
+    right:0.1rem;
+    top:1.4rem;
+    z-index: 9;
+   
+    .menuDetail{
+        min-height: 3rem;
+        width:100%;
+        background:#fff;
+        border:1px solid #666;
+        border-radius:0.1rem;
+        ul{
+            padding:0.3rem 0.3rem;
+            li{
+                border-bottom:1px solid rgba(0, 0, 0, .1);
+                height:0.8rem;
+                line-height:0.8rem;
+                font-size:0.26rem;
+                color:#666;
+                position: relative;
+                *.alink{
+                    color:#666;
+                }
+                &:last-of-type{
+                    border:none;
+                }
+                &:after{
+                    position: absolute;
+                    content: '';
+                    display: inline-block;
+                    top: 0.3rem;; 
+                    right: 0;
+                    box-sizing: border-box;
+                    -webkit-box-sizing: border-box;
+                    width: .18rem;
+                    height: .18rem;
+                    border-top: .04rem solid rgba(0, 0, 0, .2);
+                    border-right: .04rem solid rgba(0, 0, 0, .2);
+                    -webkit-transform: rotate(45deg);
+                    -moz-transform: rotate(45deg);
+                    -ms-transform: rotate(45deg);
+                    -o-transform: rotate(45deg);
+                    transform: rotate(45deg);
+                  }
+            }
+        }
+    }
+}

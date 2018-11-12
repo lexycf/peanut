@@ -89,8 +89,33 @@
 </template>
 <script>
 require('./index.less');
+import { Toast } from "mint-ui";
+import { getUserInfoByInviteCode} from '@/api/index';
 export default {
-    name:'index'
+    name:'index',
+    created(){
+        this.inviteInfo();
+    },
+    methods:{
+         inviteInfo(){
+           Toast('111');
+          
+            getUserInfoByInviteCode().then(res => {
+                let result=res.data;
+                if(result.code==0){
+                    this.invitePhone=result.data.mobile_phone;
+                    this.btcPrice=result.data.btc_cny_price;
+                }else{
+                    Toast(result.message);
+                }
+                this.regisStatus=true;
+            
+            }).catch(err => {
+                Toast('网络错误，请刷新重试');
+                this.regisStatus=true;
+            })
+        },
+    },
 }
 </script>
 
