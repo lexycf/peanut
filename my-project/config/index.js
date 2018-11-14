@@ -11,11 +11,11 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/coin': {
-        target: 'http://webapi.coinopentest.com/',
+      '/peanut': {
+        target: 'http://47.92.85.47/sphz/',
         changeOrigin: true,
         pathRewrite: {
-          '^/coin': ''
+          '^/peanut': ''
         }
       },
     },
