@@ -70,7 +70,7 @@
             </div>
         </div>
         <div class="joinBox">
-            <div class="joinBtn">立刻加入</div>
+            <div class="joinBtn" ><router-link to="/join" class='links'></router-link>立刻加入</div>
             <div class="joinleft"> <span>1</span>元</div>
         </div>
     </div>

@@ -1,7 +1,17 @@
 body{
     background: #f5f5f9;
 }
+.pos(r){position:relative;}
+.pos(a){position:absolute;}
+.pos(f){position:fixed;}
 .indexBox{
+    .links{
+        .pos(a);
+        left:0;
+        top:0;
+        right:0;
+        bottom:0;
+    }
     .banner{
         width: 100%;
         background: #76c8c5;
@@ -29,7 +39,7 @@ body{
                   margin-right: 0.1rem;
                  
               }
-              font-size: 0.24rem;
+              font-size: 0.3rem;
               color: #fff;
           }
             h1{
@@ -38,7 +48,7 @@ body{
                 
             }
             p{
-                font-size: 0.24rem;
+                font-size: 0.26rem;
                 color: #ffffff;
             }
         }
@@ -80,7 +90,7 @@ body{
                 -webkit-flex:1;
                 padding-top: 0.2rem;
                 p{
-                    font-size: 0.24rem;
+                    font-size: 0.3rem;
                     color: #999;
                 }
                 h1{
@@ -109,6 +119,7 @@ body{
             display: -ms-flexbox;
             display: -webkit-flex;
             display: flex;
+            position:relative;
             .imgbox{
                 width: 1.62rem;
                 img{
@@ -122,7 +133,7 @@ body{
                 -moz-box-flex:1;
                 flex:1;
                 -webkit-flex:1;
-                font-size: 0.24rem;
+                font-size: 0.3rem;
                 color: #999999;
                 padding-top: 0.16rem;
             }
@@ -206,7 +217,7 @@ body{
         background:#f5f5f9;
         p{
             color: #cccccc;
-            font-size: 0.24rem;
+            font-size: 0.3rem;
             text-align: center; 
             line-height: 1.04rem;
         }

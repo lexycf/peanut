@@ -1,13 +1,21 @@
 import request from '@/utils/request'
 
 //去支付，根据订单id获取订单数据
-export function getOrderInfoToPay(data) {
+export function joinAjax(data) {
     return request({
-      url: '/invite/getOrderInfoToPay',
+      url: '/rest/join',
       method: 'post',
       data:data
     })
   }
-
+  
+  //红包兑换
+export function useCoupon(data) {
+  return request({
+    url: '/rest/useCoupon',
+    method: 'post',
+    data:data
+  })
+}
 
  

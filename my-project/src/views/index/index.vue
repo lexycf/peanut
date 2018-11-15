@@ -16,7 +16,7 @@
             <div class="tat">
                 <div class="tat_left"><img src="../../../static/image/index/images/icon2.png" alt=""></div>
                 <div class="tat_right">
-                    <p>已为XXXXX个用户划拨互助金</p>
+                    <p>已为{{getOrderNum}}个用户划拨互助金</p>
                     <h1>{{getOrderNum}}</h1>
                 </div>
             </div>
@@ -32,6 +32,7 @@
         <div class="cont2">
             <div class="tit">互助计划</div>
             <div class="bt">
+                <router-link to="/plandetail" class='links'></router-link>
                 <div class="imgbox"><img src="../../../static/image/index/images/img3_03.png" alt=""></div>
                 <div class="txt">买手机时加入，手机碎屏时获助，省去高额换屏维修费的苦恼</div>
             </div>

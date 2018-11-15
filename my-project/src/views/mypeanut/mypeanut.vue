@@ -75,7 +75,7 @@ export default {
                 if(result.status==0){
                     this.balance=result.data.balance;
                 }else{
-                    Toast(result.message);
+                    Toast(result.msg);
                 }
              
             
