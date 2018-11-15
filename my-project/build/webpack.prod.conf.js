@@ -17,19 +17,19 @@ function copyFile(src, dist) {
 }
 
 const env = require('../config/' + process.env.env_config + '.env')
-var _WS_ENV_orgFileName = './src/api/serverPath.'+process.env.env_config+'.js';
+// var _WS_ENV_orgFileName = './src/api/serverPath.'+process.env.env_config+'.js';
 
-fs.unlink('./src/api/serverPath.js',function(e){
-  if(e){
-    console.log('delete file ' + _WS_ENV_orgFileName + ' faild !');
-    console.log(e)
-  }
-  else
-  {
-    copyFile(_WS_ENV_orgFileName, './src/api/serverPath.js')
-    console.log('copy file ' + _WS_ENV_orgFileName + ' success !');
-  }
-})
+// fs.unlink('./src/api/serverPath.js',function(e){
+//   if(e){
+//     console.log('delete file ' + _WS_ENV_orgFileName + ' faild !');
+//     console.log(e)
+//   }
+//   else
+//   {
+//     copyFile(_WS_ENV_orgFileName, './src/api/serverPath.js')
+//     console.log('copy file ' + _WS_ENV_orgFileName + ' success !');
+//   }
+// })
 
 const webpackConfig = merge(baseWebpackConfig, {
   module: {
