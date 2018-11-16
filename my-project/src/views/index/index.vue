@@ -32,7 +32,7 @@
         <div class="cont2">
             <div class="tit">互助计划</div>
             <div class="bt">
-                <router-link to="/plandetail" class='links'></router-link>
+                <router-link to="/product" class='links'></router-link>
                 <div class="imgbox"><img src="../../../static/image/index/images/img3_03.png" alt=""></div>
                 <div class="txt">买手机时加入，手机碎屏时获助，省去高额换屏维修费的苦恼</div>
             </div>

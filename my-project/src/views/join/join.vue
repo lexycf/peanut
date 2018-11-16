@@ -58,6 +58,7 @@
 require('./join.less');
 import { Toast } from "mint-ui";
 import { joinAjax} from '@/api/order';
+import { getBalance} from '@/api/user';
 export default {
     name:'join',
     data(){
@@ -68,16 +69,32 @@ export default {
             needPay:0,
             name:'',
             phone:'',
-            phoneType:''
+            phoneType:'',
+            balance:0
         }
     },
      created(){
         this.defaultFun();
+        this.getBalanceFun();
     },
     methods:{
         defaultFun(){
             this.choose2='active';
             this.needPay=6;
+        },
+         getBalanceFun(){
+            getBalance().then(res => {
+                let result=res.data;
+                if(result.status==0){
+                    this.balance=result.data.balance;
+                }else{
+                    Toast(result.msg);
+                }
+             
+            
+            }).catch(err => {
+                Toast('网络错误，请刷新重试');
+            })
         },
         chooseFun(type){
             if(type==1){

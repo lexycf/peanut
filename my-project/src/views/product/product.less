@@ -1,6 +1,16 @@
 body{
     background: #f5f5f9;
 }
+.pos(r){position:relative;}
+.pos(a){position:absolute;}
+.pos(f){position:fixed;}
+.links{
+    .pos(a);
+    left:0;
+    top:0;
+    right:0;
+    bottom:0;
+}
 .productbox{
     padding-bottom:1.5rem;
     .banner{
@@ -21,7 +31,7 @@ body{
                 color: #d26b53;
             }
             p{
-                font-size: 0.24rem;
+                font-size: 0.26rem;
                 color: #808285;
                 span{
                     font-size:0.44rem;
@@ -102,7 +112,7 @@ body{
                         font-size: 0.3rem;
                         color: #666;
                         i{
-                            font-size: 0.24rem;
+                            font-size: 0.26rem;
                             color: #999;
                         }
                     }
@@ -131,7 +141,7 @@ body{
                     -webkit-flex:1;
                     padding-left: 0.1rem;
                     p{
-                        font-size: 0.24rem;
+                        font-size: 0.26rem;
                         color: #999;
                         line-height: 0.4rem;
                     }
@@ -166,7 +176,7 @@ body{
             }
         }
         p{
-            font-size: 0.24rem;
+            font-size: 0.26rem;
             color: #666;
         }
     }
@@ -212,7 +222,7 @@ body{
         box-sizing: border-box;
         border-bottom: 1px solid #f5f5f9;
         p{
-            font-size: 0.24rem;
+            font-size: 0.26rem;
             color: #ccc;
             line-height: 0.35rem;
         }
@@ -403,6 +413,7 @@ body{
             background: -o-linear-gradient(right,  #fdbe81 , #fb4a37); /* Opera 11.1 - 12.0 */
             background: -moz-linear-gradient(right,  #fdbe81 , #fb4a37); /* Firefox 3.6 - 15 */
             background: linear-gradient(to right,  #fdbe81 , #fb4a37); /* 标准的语法 */
+            .pos(r);
         }
         .joinleft{ 
             line-height: 1rem;

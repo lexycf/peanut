@@ -174,7 +174,7 @@
             <div class="conBox"><img src="../../../static/image/product/wx.png" alt="">微信咨询</div>
         </div>
         <div class="joinBox">
-            <div class="joinBtn">立刻加入</div>
+            <div class="joinBtn"><router-link to="/join" class='links'></router-link>立刻加入</div>
             <div class="joinleft"><img src="../../../static/image/product/jt.png" alt="">得 <span>5</span>元奖励</div>
         </div>
     </div>
