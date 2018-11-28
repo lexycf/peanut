@@ -63,6 +63,11 @@ export const constantRouterMap = [
       path: '/invite',
       component: () => import('@/views/invite/invite'),
       hidden: true
+    },
+    {
+      path: '/upload',
+      component: () => import('@/views/upload/upload'),
+      hidden: true
     }
   
   ]

@@ -17,7 +17,7 @@
                 <p>需要是半年内购买的手机，否则屏碎将无法获得互助金</p>
             </div>
         </div>
-        <div class="cont2">
+        <!-- <div class="cont2">
             <div class="bt">
                 <img src="../../../static/image/join/chong.png" alt=""><span>充&nbsp;值</span><i>建议充值5元以上，以免余额不足失去受助资格</i>
             </div>
@@ -38,7 +38,7 @@
                     <p>可用12个月</p>
                 </div>
             </div>
-        </div>
+        </div> -->
         <div class="cont3">
             <div class="cont3_btn" @click='checkInfoFun'>
                 <p>确认加入互助</p>
