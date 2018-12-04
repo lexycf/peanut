@@ -3,7 +3,7 @@
         <div class="banner">
             <div class="txtbox">
                 <h1>手机碎屏互助计划</h1>
-                <p>最低每年<span>1</span> 元钱保护手机屏1次</p>
+                <p>最低每年<span>1</span> 元钱保护手机屏</p>
             </div>
             <div class="imgbox">
                 <img src="../../../static/image/product/images/p_1_03.jpg" alt="">
@@ -53,7 +53,7 @@
         <div class="cont2">
             <h1>互助规则</h1>
         </div>
-        <div class="cont3">
+        <div class="cont3" style="padding-top:0;">
             <h1>1&nbsp;加入条件</h1>
             <p>需要是近180天内购买的手机，没有维修记录。</p>
         </div>
@@ -64,8 +64,8 @@
         <div class="cont3">
             <h1>3&nbsp;分摊规则&nbsp;单次最高不超过<i>2元</i></h1>
             <p>如果有会员碎屏救助，其他会员会分摊帮助。</p>
-        </div>
-        <div class="cont4">
+
+             <div class="cont4">
             <ul>
                 <li>
                     <span>会员人数</span>
@@ -92,6 +92,8 @@
         <div class="cont5">
             <p>说明：如图，会员越多分摊金额越少。</p>
         </div>
+        </div>
+       
         <div class="cont6">
             <h1>4&nbsp;最高获捐&nbsp;<i>800元</i></h1>
         </div>
@@ -175,7 +177,7 @@
         </div>
         <div class="joinBox">
             <div class="joinBtn"><router-link to="/join" class='links'></router-link>立刻加入</div>
-            <div class="joinleft"><img src="../../../static/image/product/jt.png" alt="">得 <span>5</span>元奖励</div>
+            <div class="joinleft"><img src="../../../static/image/product/jt.png" alt="">分享</div>
         </div>
     </div>
 </template>
