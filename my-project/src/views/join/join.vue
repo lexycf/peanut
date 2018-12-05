@@ -77,6 +77,12 @@ export default {
         this.defaultFun();
         this.getBalanceFun();
     },
+     beforeCreate () {
+        document.querySelector('body').setAttribute('style', 'background:#fff')
+    },
+    beforeDestroy () {
+        document.querySelector('body').setAttribute('style', '')
+    },
     methods:{
         defaultFun(){
             this.choose2='active';

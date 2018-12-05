@@ -17,7 +17,7 @@
             <div class="cont1_head">
                 <h1>了解互助</h1>
             </div>
-            <div class="cont1s">
+            <div class="cont1s" style="padding-top:0;">
                 <div class="cont1s_top">
                     <div class="top_1">
                         <span>1</span>
