@@ -18,6 +18,7 @@
             </div>
         </div>
         <div class="cont3">
+             <router-link to="/orderdetail" class='links'></router-link>
             <div class="cont3_top">
                 <span>事件情况</span>
                 <i>详情&nbsp;</i>

@@ -22,13 +22,13 @@
         </div>
         <div class="cont2">
             <div class="cont2_top">
-                <h1> 本月完成任务充满互助能量</h1>
+                <h1> 互助能量</h1>
             </div>
             <div class="cont2_mid">
                 <div class="midbox"><p v-bind:style="{ width: percent+ '%' }">{{percent}}%</p></div>
             </div>
             <div class="cont2_bottom">
-                <p>可抵互助金，能量为0时互助计划终止</p>
+                <p>充满能量即可免下个月互助金</p>
             </div>
         </div>
         <div class="cont3">
