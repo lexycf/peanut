@@ -122,7 +122,7 @@
             <p>账户不低于1元</p>
         </div>
         <div class="cont8">
-            <h1>等待期&nbsp;<i>30天</i></h1>
+            <h1>等待期&nbsp;<i>60天</i></h1>
             <p>30天等待期，防止有用户带坏手机加入</p>
         </div>
         <div class="cont9">
@@ -172,8 +172,8 @@
             </div>
         </div>
         <div class="contact">
-            <div class="conBox"><img src="../../../static/image/product/tel.png" alt="">电话咨询</div>
-            <div class="conBox"><img src="../../../static/image/product/wx.png" alt="">微信咨询</div>
+            <!-- <div class="conBox"><img src="../../../static/image/product/tel.png" alt="">电话咨询</div>
+            <div class="conBox"><img src="../../../static/image/product/wx.png" alt="">微信咨询</div> -->
         </div>
         <div class="joinBox">
             <div class="joinBtn"><router-link to="/join" class='links'></router-link>立刻加入</div>
