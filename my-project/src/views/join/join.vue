@@ -10,9 +10,19 @@
                 <input type="tel" placeholder="请输入手机号" v-model="phone">
             </div>
             <div class="inputbox">
+                <span><img src="../../../static/image/join/idcard.png" alt=""></span>
+                <input type="text" placeholder="请选择购买价格" v-model="buyPrice" readonly="readonly" @focus="hideBoxFun('show')">
+            </div>
+            <div class="inputbox">
                 <span><img src="../../../static/image/join/phone.png" alt=""></span>
                 <input type="text" placeholder="请输入手机型号" v-model="phoneType">
             </div>
+            <div class="inputbox">
+                <span><img src="../../../static/image/join/phone.png" alt=""></span>
+                <input type="text" placeholder="请输入IMEI设备号" v-model="eqNum">
+                <div class="tip">·可在拨号界面输入*#06#查看手机IMEI设备号 <br> ·查看盒装盒及保修卡上设备号</div>
+            </div>
+            
             <div class="txtbox">
                 <p>需要是半年内购买的手机，否则屏碎将无法获得互助金</p>
             </div>
@@ -52,6 +62,15 @@
                 </div>
             </div>
         </div>
+        <div class="hideBox" :class='hideboxStyle'>
+            <div class="buyPriceBox">
+                <div class="tit"><span @click='hideBoxFun("hide")'>关闭</span>手机价格</div>
+                <ul>
+                    <li v-for='(price,index) in buypriceData'  @click='getBuyPrice(price,index)'  v-on:click="addClass(index)" v-bind:class="{ blue:index==current}" :key='index'> {{price}}</li>
+                </ul>
+            </div>
+        </div>
+        
     </div>
 </template>
 <script>
@@ -69,8 +88,13 @@ export default {
             needPay:0,
             name:'',
             phone:'',
+            eqNum:'',
+            buyPrice:'500-1000 元',
             phoneType:'',
-            balance:0
+            balance:0,
+            buypriceData:['500-1000 元','1001-2000元','2001-3000元','3001-4000元','4001-5000元','5001-6000元','7001-8000元','8001-9000元','9001-10000元','大于10000'],
+            hideboxStyle:'hide',
+            current:0,
         }
     },
      created(){
@@ -87,6 +111,20 @@ export default {
         defaultFun(){
             this.choose2='active';
             this.needPay=6;
+        },
+        addClass:function(index){
+            this.current=index;
+        },
+        hideBoxFun(styleType){
+            if(styleType=='show'){
+                this.hideboxStyle='show';
+            }else{
+                this.hideboxStyle='hide';
+            }
+        },
+        getBuyPrice(price){
+            this.buyPrice=price;
+            this.hideboxStyle='hide';
         },
          getBalanceFun(){
             getBalance().then(res => {
@@ -131,6 +169,12 @@ export default {
                 return false;
             }else if(!reg.test(this.phone)){
                 Toast('手机号码格式不正确');
+                return false;
+            }else if(this.phoneType==''){
+                Toast('请输入手机型号');
+                return false;
+            }else if(this.eqNum==""){
+                Toast('请输入IMEI设备号');
                 return false;
             }else{
                 this.joinAjax();

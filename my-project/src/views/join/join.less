@@ -8,6 +8,11 @@ body{
             padding-left: 0.3rem;
             box-sizing: border-box;
             border-bottom: 1px solid #f5f5f9;
+            .tip{
+                margin:0.1rem 0.4rem;
+                color:#666;
+                font-size:0.24rem;
+            }
             span{
                 img{
                     width: 0.38rem;
@@ -163,5 +168,57 @@ body{
             }
            }
         }
+    }
+    .hideBox{
+        position: fixed;
+        left:0;
+        top:0;
+        right:0;
+        bottom:0;
+        background:rgba(0,0,0,0.5);
+        display:none;
+        .buyPriceBox{
+            background:#fff;
+            width:100%;
+            position: absolute;
+            bottom:0;
+            box-sizing: border-box;
+            .tit{
+                font-size:0.3rem;
+                color:#333;
+                text-align: center;
+                line-height:1rem;
+                border-bottom:1px solid #f2f1f1;
+                span{
+                    float:right;
+                    width:1.2rem;
+                    height:1rem;
+                    font-size:0.3rem;
+                    color:#333;
+                    text-align: center;
+                }
+            }
+            ul{
+                max-height:6rem;
+                overflow-y: scroll;
+                margin:0.3rem;
+                li{
+                    height:0.8rem;
+                    color:#333;
+                    font-size:0.28rem;
+                    text-align: center;
+                    line-height:0.8rem;
+                    &.blue {
+                        color: #2175bc;
+                    }
+                }
+            }
+        }
+    }
+    .show{
+        display:block;
+    }
+    .hide{
+        display:none;
     }
 }
