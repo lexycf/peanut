@@ -79,5 +79,70 @@ body{
             text-align: center;
         }
     }
+    .hideBox{
+        position: fixed;
+        left:0;
+        top:0;
+        right:0;
+        bottom: 0;
+        background: rgba(0,0,0,0.4);
+        display: none;
+        .fingerbox{
+            width: 1.6rem;
+            height: 1.1rem;
+            position: absolute;
+            right:0;
+            top:-0.2rem;
+            img{
+                width: 100%;
+            }
+        }
+        .invitebox{
+        
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            border-radius: 0.4rem 0.4rem 0 0;
+            background: #fff;
+            height: 3.05rem;
+            .close{
+                width: 0.24rem;
+                height: 0.24rem;
+                position: absolute;
+                top: 0.23rem;
+                right: 0.25rem;
+                img{
+                    width: 100%;
+                }
+            }
+            h1{
+                font-size: 0.36rem;
+                color: #7e6b5a;
+                text-align: center;
+                margin-top: 1rem;
+                img{
+                    width: 0.46rem;
+                    height: 0.1rem;
+                    display: inline-block;
+                    margin: 0 0.5rem;
+                    vertical-align: middle;
+                    margin-top: -3px;
+                }
+            }
+            p{
+                text-align: center;
+                font-size: 0.28rem;
+                color: #f39700;
+                margin-top: 0.5rem;
+            }
+        }
+    }
     
+}
+
+.hide{
+    display:none!important;
+}
+.show{
+    display:block!important;
 }

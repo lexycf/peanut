@@ -1,5 +1,6 @@
 <template>
     <div class="mypeanutbox">
+        <div class="headerBox"><a href='' class='record'>互助记录>></a><div class="heads"><img src="./img/icon1.png" alt="">&nbsp;微信昵称</div></div>
         <div class="cont1">
             <div class="cont1_top">
                 <div class="top_left"><h1>账户余额<i>{{balance}}</i>元</h1></div>
@@ -28,7 +29,7 @@
                 <div class="midbox"><p v-bind:style="{ width: percent+ '%' }">{{percent}}%</p></div>
             </div>
             <div class="cont2_bottom">
-                <p>充满能量即可免下个月互助金</p>
+                <p>充满能量条即可免10元管理费/年</p>
             </div>
         </div>
         <div class="cont3">

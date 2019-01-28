@@ -26,14 +26,39 @@
             </div>
         </div>
         <div class="footer">
-            <p>立刻邀请</p>
+            <p @click='showHide()'>立刻邀请</p>
+        </div>
+        <div class="hideBox" :class='hideStyle'>
+            <div class="fingerbox">
+                <img src="./img/finger.png" alt="">
+            </div>
+            <div class="invitebox">
+                <div class="close" @click='closeHide'><img src="./img/close.png" alt=""></div>
+                <h1>点击右上角<img src="./img/dian.png" alt="">分享给该好友</h1>
+                <p>分享后聊两句，邀请成功几率更大哦~</p>
+            </div>
         </div>
     </div>
 </template>
 <script>
 require('./invite.less');
 export default {
-    name:'invite'
+    name:'invite',
+    data(){
+        return {
+            hideStyle:'hide'
+        }
+    },
+    methods:{
+         closeHide(){
+             this.hideStyle='hide';
+            
+        },
+        showHide(){
+            this.hideStyle='show'
+        }
+       
+    },
 }
 </script>
 

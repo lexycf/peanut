@@ -1,0 +1,147 @@
+body {
+  background: #f5f5f9;
+}
+.invitebox .cont {
+  width: 6.9rem;
+  height: 7.9rem;
+  border-radius: 0.5rem;
+  background: url(../../../static/image/invite/bg_03.png) no-repeat;
+  margin: 0 auto;
+  background-size: 100%;
+  margin-top: 0.3rem;
+  box-sizing: border-box;
+}
+.invitebox .cont .cont1 {
+  padding-top: 1.6rem;
+}
+.invitebox .cont .cont1 h1 {
+  font-size: 0.72rem;
+  color: #fff;
+  text-align: center;
+}
+.invitebox .cont .cont2 {
+  padding-top: 0.7rem;
+}
+.invitebox .cont .cont2 p {
+  text-align: center;
+  font-size: 0.36rem;
+  color: #fff;
+}
+.invitebox .cont .cont3 {
+  padding-top: 0.9rem;
+}
+.invitebox .cont .cont3 p {
+  text-align: center;
+  color: #fff;
+  font-size: 0.36rem;
+}
+.invitebox .cont .cont4 {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  margin-top: 0.4rem;
+}
+.invitebox .cont .cont4 .conts {
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  -webkit-flex: 1;
+  flex: 1;
+}
+.invitebox .cont .cont4 .conts img {
+  display: block;
+  width: 0.8rem;
+  margin: 0 auto;
+}
+.invitebox .cont .cont4 .conts span {
+  display: block;
+  width: 100%;
+  text-align: center;
+  font-size: 0.36rem;
+  color: #fff;
+}
+.invitebox .footer {
+  width: 6.9rem;
+  border-radius: 0.5rem;
+  margin: 0 auto;
+  margin-top: 0.8rem;
+  padding: 0.2rem 0;
+  background: -webkit-linear-gradient(left, #fdbe81, #fb4a37);
+  /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #fdbe81, #fb4a37);
+  /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #fdbe81, #fb4a37);
+  /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #fdbe81, #fb4a37);
+  /* 标准的语法 */
+}
+.invitebox .footer p {
+  font-size: 0.36rem;
+  color: #fff;
+  text-align: center;
+}
+.invitebox .hideBox {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  display: none;
+}
+.invitebox .hideBox .fingerbox {
+  width: 1.6rem;
+  height: 1.1rem;
+  position: absolute;
+  right: 0;
+  top: -0.2rem;
+}
+.invitebox .hideBox .fingerbox img {
+  width: 100%;
+}
+.invitebox .hideBox .invitebox {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  border-radius: 0.4rem 0.4rem 0 0;
+  background: #fff;
+  height: 3.05rem;
+}
+.invitebox .hideBox .invitebox .close {
+  width: 0.24rem;
+  height: 0.24rem;
+  position: absolute;
+  top: 0.23rem;
+  right: 0.25rem;
+}
+.invitebox .hideBox .invitebox .close img {
+  width: 100%;
+}
+.invitebox .hideBox .invitebox h1 {
+  font-size: 0.36rem;
+  color: #7e6b5a;
+  text-align: center;
+  margin-top: 1rem;
+}
+.invitebox .hideBox .invitebox h1 img {
+  width: 0.46rem;
+  height: 0.1rem;
+  display: inline-block;
+  margin: 0 0.5rem;
+  vertical-align: middle;
+  margin-top: -3px;
+}
+.invitebox .hideBox .invitebox p {
+  text-align: center;
+  font-size: 0.28rem;
+  color: #f39700;
+  margin-top: 0.5rem;
+}
+.hide {
+  display: none!important;
+}
+.show {
+  display: block!important;
+}
