@@ -93,6 +93,7 @@
 <script>
 require('./index.less');
 import { Toast } from "mint-ui";
+import Cookies from 'js-cookie'
 import { getMemberNum,getPaidOrderNum} from '@/api/index';
 export default {
     name:'index',
@@ -135,7 +136,14 @@ export default {
             }).catch(err => {
                 Toast('网络错误，请刷新重试');
             })
-        }
+        },
+        getOpenid(){
+            var openid=this.getUrlKey('openid');
+            Cookies.set('openid', openid);
+        },
+        getUrlKey (name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
+        },
     },
 }
 </script>

@@ -4,9 +4,10 @@
     <router-view/>
   </div>
 </template>
-
-<script>
+<script src='http://res.wx.qq.com/open/js/jweixin-1.4.0.jss'></script>
+<script> 
 require('../static/commonfile/css/lib.less');
+require('./utils/weixinport.js');
 //require('../plug/layerBox/layerBox.less');
 export default {
   name: 'App'
