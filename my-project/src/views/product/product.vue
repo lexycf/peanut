@@ -62,7 +62,7 @@
             <p>每年可帮助免费换屏一次，经常碎屏的用户属于使用习惯不好，我们无能为力。</p>
         </div>
         <div class="cont3">
-            <h1>3&nbsp;分摊规则&nbsp;单次最高不超过<i>2元</i></h1>
+            <h1>3&nbsp;分摊规则&nbsp;单次最高不超过<i>3元</i></h1>
             <p>如果有会员碎屏救助，其他会员会分摊帮助。</p>
 
              <div class="cont4">
@@ -95,7 +95,7 @@
         </div>
        
         <div class="cont6">
-            <h1>4&nbsp;最高获捐&nbsp;<i>800元</i></h1>
+            <h1>4&nbsp;最高获捐&nbsp;<i>1000元</i></h1>
         </div>
         <div class="cont7">
             <ul>
@@ -104,25 +104,33 @@
                     <span>碎屏帮助金</span>
                 </li>
                 <li>
-                    <span>3000以下</span>
-                    <span>300</span>
+                    <span>>500元，≦1000元</span>
+                    <span>100元</span>
                 </li>
                 <li>
-                    <span>3000-6000元</span>
-                    <span>600元</span>
+                    <span>>1000元，≦2000元</span>
+                    <span>200元</span>
                 </li>
                 <li>
-                    <span>6000元以上</span>
-                    <span>800元</span>
+                    <span>>2000元，≦3000元</span>
+                    <span>300元</span>
+                </li>
+                <li>
+                    <span>>3000元，≦4000元</span>
+                    <span>400元</span>
+                </li>
+                <li>
+                    <span>>10000元</span>
+                    <span>1000元</span>
                 </li>
             </ul>
         </div>
         <div class="cont8">
-            <h1>余额要求</h1>
-            <p>账户不低于1元</p>
+            <h1>5&nbsp;余额要求</h1>
+            <p>账户不低于3元</p>
         </div>
         <div class="cont8">
-            <h1>等待期&nbsp;<i>60天</i></h1>
+            <h1>6&nbsp;等待期&nbsp;<i>60天</i></h1>
             <p>30天等待期，防止有用户带坏手机加入</p>
         </div>
         <div class="cont9">

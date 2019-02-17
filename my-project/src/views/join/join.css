@@ -1,0 +1,225 @@
+body {
+  background: #fff;
+}
+.joinbox .cont1 .inputbox {
+  padding: 0.2rem 0;
+  padding-left: 0.3rem;
+  box-sizing: border-box;
+  border-bottom: 1px solid #f5f5f9;
+}
+.joinbox .cont1 .inputbox .tip {
+  margin: 0.1rem 0.4rem;
+  color: #666;
+  font-size: 0.24rem;
+}
+.joinbox .cont1 .inputbox span img {
+  width: 0.38rem;
+  height: 0.38rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 0.22rem;
+}
+.joinbox .cont1 .inputbox input {
+  width: 6rem;
+  height: 0.6rem;
+  font-size: 0.3rem;
+  color: #333;
+  border: none;
+}
+.joinbox .cont1 .txtbox {
+  padding: 0.25rem 0;
+}
+.joinbox .cont1 .txtbox p {
+  text-align: center;
+  font-size: 0.28rem;
+  color: #ccc;
+}
+.joinbox .cont2 {
+  background: #f5f5f9;
+  padding-left: 0 0.3rem;
+  box-sizing: border-box;
+}
+.joinbox .cont2 .bt {
+  padding: 0.4rem 0.3rem;
+}
+.joinbox .cont2 .bt img {
+  width: 0.32rem;
+  height: 0.32rem;
+  display: inline-block;
+  vertical-align: middle;
+  margin-top: -3px;
+}
+.joinbox .cont2 .bt span {
+  font-size: 0.3rem;
+  color: #333;
+  padding-left: 0.2rem;
+}
+.joinbox .cont2 .bt i {
+  font-size: 0.28rem;
+  color: #ffb400;
+  padding-left: 0.26rem;
+}
+.joinbox .cont2 .cont2box {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  padding-bottom: 3.33rem;
+}
+.joinbox .cont2 .cont2box .smallbox {
+  width: 2.08rem;
+  padding: 0.1rem 0;
+  background: #fff;
+  border-radius: 0.32rem;
+  margin: 0.1rem;
+  text-align: center;
+  box-flex: 1;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  flex: 1;
+  -webkit-flex: 1;
+  position: relative;
+}
+.joinbox .cont2 .cont2box .smallbox.active {
+  border: 1px solid #ff6f00;
+}
+.joinbox .cont2 .cont2box .smallbox span {
+  width: 0.62rem;
+  height: 0.62rem;
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: url('../../../static/image/recharge/dui.png') no-repeat;
+  background-size: 100%;
+}
+.joinbox .cont2 .cont2box .smallbox h1 {
+  font-size: 0.24rem;
+  color: #666;
+}
+.joinbox .cont2 .cont2box .smallbox h1 i {
+  font-size: 0.36rem;
+  color: #ff6f00;
+}
+.joinbox .cont2 .cont2box .smallbox p {
+  font-size: 0.2rem;
+  color: #ccc;
+}
+.joinbox .cont3 {
+  box-sizing: border-box;
+  margin-top: 0.3rem;
+  padding: 0 0.3rem 0.3rem;
+  position: fixed;
+  bottom: 0;
+}
+.joinbox .cont3 .cont3_btn {
+  width: 6.9rem;
+  height: 1rem;
+  border-radius: 0.5rem;
+  background: -webkit-linear-gradient(left, #fdbe81, #fb4a37);
+  /* Safari 5.1 - 6.0 */
+  background: -o-linear-gradient(right, #fdbe81, #fb4a37);
+  /* Opera 11.1 - 12.0 */
+  background: -moz-linear-gradient(right, #fdbe81, #fb4a37);
+  /* Firefox 3.6 - 15 */
+  background: linear-gradient(to right, #fdbe81, #fb4a37);
+  /* 标准的语法 */
+}
+.joinbox .cont3 .cont3_btn p {
+  font-size: 0.36rem;
+  color: #fff;
+  text-align: center;
+  line-height: 1rem;
+}
+.joinbox .cont3 .footer {
+  margin-top: 0.44rem;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  padding-right: 0.3rem;
+}
+.joinbox .cont3 .footer .ft_box span {
+  width: 0.39rem;
+  height: 0.39rem;
+  display: block;
+}
+.joinbox .cont3 .footer .ft_box span.hadsel {
+  background: url(../../../static/image/join/sel.png) no-repeat left center;
+  background-size: 100%;
+}
+.joinbox .cont3 .footer .ft_txt {
+  box-flex: 1;
+  -webkit-box-flex: 1;
+  -moz-box-flex: 1;
+  flex: 1;
+  -webkit-flex: 1;
+  font-size: 0.26rem;
+  color: #666;
+  line-height: 0.4rem;
+  padding-left: 0.2rem;
+}
+.joinbox .cont3 .footer .ft_txt i {
+  color: #ff6f00;
+}
+.joinbox .hideBox {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+}
+.joinbox .hideBox .contBox {
+  background: #fff;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  box-sizing: border-box;
+}
+.joinbox .hideBox .contBox .tit {
+  font-size: 0.3rem;
+  color: #333;
+  text-align: center;
+  line-height: 1rem;
+  border-bottom: 1px solid #f2f1f1;
+}
+.joinbox .hideBox .contBox .tit span {
+  float: right;
+  width: 1.2rem;
+  height: 1rem;
+  font-size: 0.3rem;
+  color: #333;
+  text-align: center;
+}
+.joinbox .hideBox .contBox ul {
+  max-height: 6rem;
+  overflow-y: scroll;
+  margin: 0.3rem;
+}
+.joinbox .hideBox .contBox ul li {
+  height: 0.8rem;
+  color: #333;
+  font-size: 0.28rem;
+  text-align: center;
+  line-height: 0.8rem;
+}
+.joinbox .hideBox .contBox ul li.blue {
+  color: #2175bc;
+}
+.joinbox .hideBox .contBox .txtBox {
+  max-height: 12rem;
+  padding: 0.3rem;
+  overflow-y: scroll;
+  font-size: 0.3rem;
+  color: #333;
+}
+.joinbox .show {
+  display: block;
+}
+.joinbox .hide {
+  display: none;
+}
