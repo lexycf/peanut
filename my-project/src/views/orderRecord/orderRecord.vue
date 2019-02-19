@@ -40,16 +40,20 @@ export default {
     name:'orderRecord',
     created(){
         this.getPublishFun();
+        this.openid=this.getUrlKey('openid');
     },
     data(){
         return {
-            recordList:[]
+            recordList:[],
+            openid:''
         }
     },
     methods:{
          getPublishFun(){
-          
-            getPublish().then(res => {
+            let data = {
+                    openid:this.openid
+                }
+            getPublish(data).then(res => {
                 let result=res.data;
                 if(result.status==0){
                     this.recordList=result.data;
@@ -60,6 +64,9 @@ export default {
             }).catch(err => {
                 Toast('网络错误，请刷新重试');
             })
+        },
+        getUrlKey (name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
         },
        
     },

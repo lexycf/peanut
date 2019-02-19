@@ -1,19 +1,21 @@
 import request from '@/utils/request'
 
 //总注册用户数
-export function getMemberNum() {
+export function getMemberNum(data) {
     return request({
       url: '/rest/getMemberNum',
       method: 'get',
+      data:data
     })
   }
 
 
   //总赔付数
-export function getPaidOrderNum() {
+export function getPaidOrderNum(data) {
   return request({
     url: '/rest/getPaidOrderNum',
     method: 'get',
+    data:data
   })
 }
 

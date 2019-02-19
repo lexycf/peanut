@@ -7,17 +7,17 @@
                 <div class="top_right">申请互助金</div>
             </div>
             <div class="cont1_bottom">
+                <!-- <div class="smallbox">
+                    <p><router-link to="/orderdetail" class='links'></router-link>补充资料</p>
+                </div> -->
                 <div class="smallbox">
-                    <p>补充资料</p>
-                </div>
-                <div class="smallbox">
-                    <p>红包兑换</p>
+                    <p><router-link to="/redexchange" class='links'></router-link>红包兑换</p>
                 </div>
                 <div class="smallbox">
                     <p>邀请好友</p>
                 </div>
                 <div class="smallbox">
-                    <p>计划充值</p>
+                    <p><router-link to="/recharge" class='links'></router-link>计划充值</p>
                 </div>  
             </div>
         </div>
@@ -57,11 +57,13 @@ export default {
     created(){
         this.getBalanceFun();
         this.defaultFun();
+        this.openid=this.getUrlKey('openid');
     },
     data(){
         return {
             balance:0,
-            percent:10
+            percent:10,
+            openid:''
            
         }
     },
@@ -71,6 +73,9 @@ export default {
         },
         
          getBalanceFun(){
+            let data = {
+                    openid:this.openid
+                }
             getBalance().then(res => {
                 let result=res.data;
                 if(result.status==0){
@@ -83,6 +88,9 @@ export default {
             }).catch(err => {
                 Toast('网络错误，请刷新重试');
             })
+        },
+        getUrlKey (name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
         },
     }
 }

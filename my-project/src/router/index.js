@@ -73,6 +73,11 @@ export const constantRouterMap = [
       path: '/upload2',
       component: () => import('@/views/upload2/upload2'),
       hidden: true
+    },
+    {
+      path: '/upload3',
+      component: () => import('@/views/upload2/upload3'),
+      hidden: true
     }
   
   ]

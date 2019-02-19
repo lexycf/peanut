@@ -100,17 +100,21 @@ export default {
     created(){
         this.getMemberNumFun();
         this.getPaidOrderNumFun();
+        this.openid=this.getUrlKey('openid');
     },
     data(){
         return {
             hadMemNum:0,
-            getOrderNum:0
+            getOrderNum:0,
+            openid:''
         }
     },
     methods:{
          getMemberNumFun(){
-          
-            getMemberNum().then(res => {
+            let data={
+                    openid:this.openid
+                }
+            getMemberNum(data).then(res => {
                 let result=res.data;
                 if(result.status==0){
                     this.hadMemNum=result.data.hadMemNum;
@@ -119,12 +123,13 @@ export default {
                 }
              
             
-            }).catch(err => {
-                Toast('网络错误，请刷新重试');
             })
         },
         getPaidOrderNumFun(){
-            getPaidOrderNum().then(res => {
+            let data={
+                openid:this.openid
+                }
+            getPaidOrderNum(data).then(res => {
                 let result=res.data;
                 if(result.status==0){
                     this.getOrderNum=result.data.getOrderNum;

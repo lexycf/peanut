@@ -9,7 +9,7 @@
         <span><img src="../../../static/image/join/idcard.png" alt=""></span>
         <input type="tel" placeholder="请输入手机号" v-model="phone">
       </div>
-      <div class="inputbox">
+      <div class="inputbox selpriceBox">
         <span><img src="../../../static/image/join/idcard.png" alt=""></span>
         <input type="text" placeholder="请选择购买价格" v-model="buyPrice" readonly="readonly" @focus="hideBoxFun('show',1)">
       </div>
@@ -243,7 +243,8 @@
         hideboxStyle1: 'hide',
         hideboxStyle2: 'hide',
         hideboxStyle3: 'hide',
-        hideboxStyle4: 'hide'
+        hideboxStyle4: 'hide',
+        openid:''
       }
     },
     created() {
@@ -260,6 +261,7 @@
       defaultFun() {
         this.choose2 = 'active';
         this.needPay = 6;
+        this.openid=this.getUrlKey('openid');
       },
       addClass: function (index) {
         this.current = index;
@@ -295,7 +297,10 @@
         this.hideboxStyle1 = 'hide';
       },
       getBalanceFun() {
-        getBalance().then(res => {
+        let data={
+          openid:this.openid
+        }
+        getBalance(data).then(res => {
           let result = res.data;
           if (result.status == 0) {
             this.balance = result.data.balance;
@@ -304,8 +309,6 @@
           }
 
 
-        }).catch(err => {
-          Toast('网络错误，请刷新重试');
         })
       },
       chooseFun(type) {
@@ -345,14 +348,15 @@
           Toast('请输入IMEI设备号');
           return false;
         } else {
-          this.joinAjax();
+          this.joinAjaxFun();
         }
       },
       joinAjaxFun() {
         let data = {
           username: this.name,
           tele: this.phone,
-          phonetype: this.phoneType
+          phonetype: this.phoneType,
+          openid:this.openid
         }
         joinAjax(data).then(res => {
           let result = res.data;
@@ -363,10 +367,11 @@
           }
 
 
-        }).catch(err => {
-          Toast('网络错误，请刷新重试');
         })
-      }
+      },
+      getUrlKey (name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
+        },
     }
   }
 

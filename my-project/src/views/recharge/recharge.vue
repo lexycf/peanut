@@ -44,6 +44,7 @@ export default {
      created(){
         this.getBalanceFun();
         this.defaultFun();
+        this.openid=this.getUrlKey('openid');
     },
     data(){
         return {
@@ -52,7 +53,8 @@ export default {
             choose1:'',
             choose2:'',
             choose3:'',
-            needPay:0
+            needPay:0,
+            openid:''
         }
     },
     methods:{
@@ -80,7 +82,10 @@ export default {
 
         },
          getBalanceFun(){
-            getBalance().then(res => {
+            let data = {
+                    openid:this.openid
+                }
+            getBalance(data).then(res => {
                 let result=res.data;
                 if(result.status==0){
                     this.hadMemNum=result.data.hadMemNum;
@@ -93,6 +98,10 @@ export default {
                 Toast('网络错误，请刷新重试');
             })
         },
+        getUrlKey (name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
+        },
+        
     }
 }
 </script>

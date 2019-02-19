@@ -46,8 +46,12 @@ export default {
     name:'invite',
     data(){
         return {
-            hideStyle:'hide'
+            hideStyle:'hide',
+            openid:''
         }
+    },
+    created(){
+        this.openid=this.getUrlKey('openid');
     },
     methods:{
          closeHide(){
@@ -56,7 +60,10 @@ export default {
         },
         showHide(){
             this.hideStyle='show'
-        }
+        },
+        getUrlKey (name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
+        },
        
     },
 }

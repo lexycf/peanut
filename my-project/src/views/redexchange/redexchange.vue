@@ -17,8 +17,14 @@ export default {
     name:'redexchange',
     data(){
         return {
-            redCode:''
+            redCode:'',
+            openid:''
+            
         }
+    },
+    created(){
+       
+        this.openid=this.getUrlKey('openid');
     },
     methods:{
         exchangeFun(){
@@ -27,8 +33,10 @@ export default {
                 return false;
             }
             let data={
-                couponid:this.redCode
+                couponid:this.redCode,
+                openid:this.openid
             }
+            
              getBalance().then(res => {
                 let result=res.data;
                 if(result.status==0){
@@ -38,9 +46,10 @@ export default {
                 }
              
             
-            }).catch(err => {
-                Toast('网络错误，请刷新重试');
             })
+        },
+        getUrlKey (name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
         },
     }
 
