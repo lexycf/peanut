@@ -116,10 +116,10 @@ export default {
                 }
             getMemberNum(data).then(res => {
                 let result=res.data;
-                if(result.status==0){
-                    this.hadMemNum=result.data.hadMemNum;
+                if(result.status==200){
+                    this.hadMemNum=result.data.members;
                 }else{
-                    Toast(result.message);
+                    Toast(result.msg);
                 }
              
             
@@ -131,15 +131,13 @@ export default {
                 }
             getPaidOrderNum(data).then(res => {
                 let result=res.data;
-                if(result.status==0){
-                    this.getOrderNum=result.data.getOrderNum;
+                if(result.status==200){
+                    this.getOrderNum=result.data.orders;
                 }else{
-                    Toast(result.message);
+                    Toast(result.msg);
                 }
              
             
-            }).catch(err => {
-                Toast('网络错误，请刷新重试');
             })
         },
         getOpenid(){

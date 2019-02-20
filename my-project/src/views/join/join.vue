@@ -353,17 +353,25 @@
       },
       joinAjaxFun() {
         let data = {
-          username: this.name,
-          tele: this.phone,
-          phonetype: this.phoneType,
-          openid:this.openid
+          
+           openid:this.openid,
+           joinBean:{
+            username: this.name,
+            tele: this.phone,
+            phonetype: this.phoneType,
+            imei:this.eqNum,
+            price:this.buyPrice
+
+          }
         }
+        data=JSON.stringify(data);
+        console.log(data);
         joinAjax(data).then(res => {
           let result = res.data;
-          if (result.status == 0) {
-
+          if (result.status == 200) {
+            this.$router.push({ path: "/setLoginPwd?randstr="+result.data.randstr+"&mobile="+this.phone+"&from=activity" });
           } else {
-            Toast(result.message);
+            Toast(result.msg);
           }
 
 

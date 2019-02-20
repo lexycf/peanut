@@ -10,7 +10,7 @@
             </div>
         </div>
         <div class="head">
-            <h1>20180808</h1>
+            <h1>{{hadMemNum}}</h1>
             <p>已加入会员</p>
         </div>
         <div class="cont1">
@@ -191,8 +191,76 @@
 </template>
 <script>
 require('./product.less');
+import { Toast } from "mint-ui";
+import { getMemberNum} from '@/api/index';
+import { shareurl} from '@/api/wxapi';
 export default {
-    name:'product'
+    name:'product',
+    created(){
+        this.getMemberNumFun();
+        this.openid=this.getUrlKey('openid');
+        this.getwxParam();
+    },
+    data(){
+        return {
+            hadMemNum:0,
+            openid:''
+        }
+    },
+    methods:{
+        getwxParam(){
+            let url=location.href;
+            let data={
+                    openid:this.openid,
+                    url:url
+                }
+                shareurl(data).then(res => {
+                let result=res.data;
+                if(result.status==200){
+                    this.hadMemNum=result.data.members;
+                }else{
+                    Toast(result.msg);
+                }
+             
+            
+            })
+        },
+
+         getMemberNumFun(){
+            let data={
+                    openid:this.openid
+                }
+            getMemberNum(data).then(res => {
+                let result=res.data;
+                if(result.status==200){
+                    this.hadMemNum=result.data.members;
+                }else{
+                    Toast(result.msg);
+                }
+             
+            
+            })
+        },
+        getPaidOrderNumFun(){
+            let data={
+                openid:this.openid
+                }
+            getPaidOrderNum(data).then(res => {
+                let result=res.data;
+                if(result.status==200){
+                    this.getOrderNum=result.data.orders;
+                }else{
+                    Toast(result.msg);
+                }
+             
+            
+            })
+        },
+       
+        getUrlKey (name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
+        },
+    },
 }
 </script>
 
