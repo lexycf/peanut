@@ -214,6 +214,9 @@ export default {
                     openid:this.openid,
                     url:url
                 }
+               
+                data=JSON.stringify(data);
+                console.log(data);
                 shareurl(data).then(res => {
                 let result=res.data;
                 if(result.status==200){

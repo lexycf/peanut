@@ -9,3 +9,12 @@ export function getBalance(data) {
     data:data
   })
 }
+
+//充值
+export function deposit(data) {
+  return request({
+    url: '/rest/deposit',
+    method: 'post',
+    data:data
+  })
+}

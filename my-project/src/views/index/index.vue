@@ -112,7 +112,8 @@ export default {
     methods:{
          getMemberNumFun(){
             let data={
-                    openid:this.openid
+                    openid:this.openid,
+                    aaa:'aaa'
                 }
             getMemberNum(data).then(res => {
                 let result=res.data;

@@ -58,7 +58,7 @@
           <span class="hadsel"></span>
         </div>
         <div class="ft_txt">
-          我已阅读<i @click='hideBoxFun("show",3)'>《手机设备要求》</i><i @click='hideBoxFun("show",2)'>《会员公约》</i>及<i  @click='hideBoxFun("show",4)'>《计划条款》</i>，并承诺加入时手机无任何故障。
+          我已阅读<i @click='hideBoxFun("show",3)'>《手机设备要求》</i><i @click='hideBoxFun("show",2)'>《会员公约》</i>及<i @click='hideBoxFun("show",4)'>《计划条款》</i>，并承诺加入时手机无任何故障。
         </div>
       </div>
     </div>
@@ -182,25 +182,25 @@
             </li>
           </ol>
           <h1>三、不予互助情形</h1>
-              3.1、未达到60天等待期申请互助；
-              3.2、账户余额不足，丧失会员资格期间屏幕损坏同时未在30天内补足余额的；
-              3.3、恶意损害手机屏幕骗取互助金；
-              3.4、购买机型和申请材料不能匹配的情况；
-              3.5、无法提供购买发票等相关凭证；
-              3.6、已成功申请两次碎屏互助，第三次将不予互助；
+          3.1、未达到60天等待期申请互助；
+          3.2、账户余额不足，丧失会员资格期间屏幕损坏同时未在30天内补足余额的；
+          3.3、恶意损害手机屏幕骗取互助金；
+          3.4、购买机型和申请材料不能匹配的情况；
+          3.5、无法提供购买发票等相关凭证；
+          3.6、已成功申请两次碎屏互助，第三次将不予互助；
 
           <h1>四、如何保持会员有效</h1>
-              4.1、会员应充持续值保持会员身份，如账户余额小于1元奖暂时失去资格，同时不参与互助分摊；
-              4.2、失去资格30天内充值，余额补足后恢复会员身份；
-              4.3、账户余额不足，丧失会员资格期间屏幕损坏同时未在30天内补足余额的；
-              4.4、恶意损害手机屏幕骗取互助金；
-              4.5、购买机型和申请材料不能匹配的情况；
-              4.6、无法提供购买发票等相关凭证；
+          4.1、会员应充持续值保持会员身份，如账户余额小于1元奖暂时失去资格，同时不参与互助分摊；
+          4.2、失去资格30天内充值，余额补足后恢复会员身份；
+          4.3、账户余额不足，丧失会员资格期间屏幕损坏同时未在30天内补足余额的；
+          4.4、恶意损害手机屏幕骗取互助金；
+          4.5、购买机型和申请材料不能匹配的情况；
+          4.6、无法提供购买发票等相关凭证；
           <h1>五、申请互助流程</h1>
-              5.1、用户准备材料在线提交；
-              5.2、平台审核通过；
-              5.3、在线公示7天；
-              5.4、公示期间如无异议，三个工作日内划拨互助金；
+          5.1、用户准备材料在线提交；
+          5.2、平台审核通过；
+          5.3、在线公示7天；
+          5.4、公示期间如无异议，三个工作日内划拨互助金；
 
 
         </div>
@@ -233,6 +233,7 @@
         phone: '',
         eqNum: '',
         buyPrice: '500-1000 元',
+        priceIdx:0,
         phoneType: '',
         balance: 0,
         buypriceData: ['500-1000 元', '1001-2000元', '2001-3000元', '3001-4000元', '4001-5000元', '5001-6000元', '7001-8000元',
@@ -244,7 +245,7 @@
         hideboxStyle2: 'hide',
         hideboxStyle3: 'hide',
         hideboxStyle4: 'hide',
-        openid:''
+        openid: ''
       }
     },
     created() {
@@ -261,44 +262,45 @@
       defaultFun() {
         this.choose2 = 'active';
         this.needPay = 6;
-        this.openid=this.getUrlKey('openid');
+        this.openid = this.getUrlKey('openid');
       },
       addClass: function (index) {
         this.current = index;
       },
-      hideBoxFun(styleType,type) {
-        console.log(styleType+'_'+type);
+      hideBoxFun(styleType, type) {
+        console.log(styleType + '_' + type);
         if (styleType == 'show') {
-          if(type==1){
+          if (type == 1) {
             this.hideboxStyle1 = 'show';
-          }else if(type==2){
+          } else if (type == 2) {
             this.hideboxStyle2 = 'show';
-          }else if(type==3){
+          } else if (type == 3) {
             this.hideboxStyle3 = 'show';
-          }else if(type==4){
+          } else if (type == 4) {
             this.hideboxStyle4 = 'show';
           }
-          
+
         } else {
-          if(type==1){
+          if (type == 1) {
             this.hideboxStyle1 = 'hide';
-          }else if(type==2){
+          } else if (type == 2) {
             this.hideboxStyle2 = 'hide';
-          }else if(type==3){
+          } else if (type == 3) {
             this.hideboxStyle3 = 'hide';
-          }else if(type==4){
+          } else if (type == 4) {
             this.hideboxStyle4 = 'hide';
           }
         }
         console.log(this.hideboxStyle1);
       },
-      getBuyPrice(price) {
+      getBuyPrice(price,idx) {
         this.buyPrice = price;
+        this.priceIdx=idx;
         this.hideboxStyle1 = 'hide';
       },
       getBalanceFun() {
-        let data={
-          openid:this.openid
+        let data = {
+          openid: this.openid
         }
         getBalance(data).then(res => {
           let result = res.data;
@@ -352,24 +354,23 @@
         }
       },
       joinAjaxFun() {
+        
         let data = {
-          
-           openid:this.openid,
-           joinBean:{
             username: this.name,
             tele: this.phone,
             phonetype: this.phoneType,
-            imei:this.eqNum,
-            price:this.buyPrice
-
-          }
+            imei: this.eqNum,
+            price: this.priceIdx,
+            openid:this.openid
         }
         data=JSON.stringify(data);
-        console.log(data);
+        console.log(typeof(data));
         joinAjax(data).then(res => {
           let result = res.data;
           if (result.status == 200) {
-            this.$router.push({ path: "/setLoginPwd?randstr="+result.data.randstr+"&mobile="+this.phone+"&from=activity" });
+            this.$router.push({
+              path: "/setLoginPwd?randstr=" + result.data.randstr + "&mobile=" + this.phone + "&from=activity"
+            });
           } else {
             Toast(result.msg);
           }
@@ -377,9 +378,10 @@
 
         })
       },
-      getUrlKey (name) {
-            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
-        },
+      getUrlKey(name) {
+        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[
+          1].replace(/\+/g, '%20')) || null
+      },
     }
   }
 

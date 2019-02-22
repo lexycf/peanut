@@ -3,28 +3,28 @@
         <div class="head">
         <p>*为保护会员隐私，公示后将隐藏个人信息!</p>
     </div>
-    <div class="conts">
+    <div class="conts" v-for="item in recordList" :key="item.idx">
+        <router-link to="/orderdetail" class='links'></router-link>
         <div class="cont1">
-            <p>2019-01-01</p>
+            <p>{{item.applytime}}</p>
         </div>
         <div class="cont2">
-            <div class="cont2_left"><img src="../../../static/image/orderRecord/images/gs_03.jpg" alt=""></div>
+            <div class="cont2_left"><img :src="item.omuserphotog" alt=""></div>
             <div class="cont2_right">
                 <p>
-                    互助会员：乔布斯<br>
-                    互助计划：手机碎屏互助计划<br>
-                    所获互助金：500.00元
+                    互助会员：{{item.username}}<br>
+                    互助计划：{{item.product}}<br>
+                    所获互助金：{{item.fund}}元
                 </p>
             </div>
         </div>
         <div class="cont3">
-             <router-link to="/orderdetail" class='links'></router-link>
             <div class="cont3_top">
                 <span>事件情况</span>
                 <i>详情&nbsp;</i>
             </div>
             <div class="cont3_bottom">
-                <p>上班时不小心掉在了地上。屏幕完全摔碎了，苹果工作紧张每天开会都要用。</p>
+                <p>{{item.applycomment}}</p>
             </div>
         </div>
     </div>
@@ -55,10 +55,10 @@ export default {
                 }
             getPublish(data).then(res => {
                 let result=res.data;
-                if(result.status==0){
-                    this.recordList=result.data;
+                if(result.status==200){
+                    this.recordList=result.data.orders;
                 }else{
-                    Toast(result.message);
+                    Toast(result.msg);
                 }
             
             }).catch(err => {

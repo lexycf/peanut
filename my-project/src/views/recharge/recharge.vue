@@ -31,19 +31,20 @@
             </div>
         </div>
         <div class="footer">
-            <p>微信支付{{needPay}}元</p>
+            <p @click='getdeposit()'>微信支付{{needPay}}元</p>
         </div>
     </div>
 </template>
 <script>
 require('./recharge.less');
 import { Toast } from "mint-ui";
-import { getBalance} from '@/api/user';
+import { getBalance,deposit} from '@/api/user';
 export default {
     name:'recharge',
      created(){
         this.getBalanceFun();
         this.defaultFun();
+       
         this.openid=this.getUrlKey('openid');
     },
     data(){
@@ -82,10 +83,27 @@ export default {
 
         },
          getBalanceFun(){
+             //获取余额
             let data = {
-                    openid:this.openid
+                    openid:this.openid,
                 }
             getBalance(data).then(res => {
+                let result=res.data;
+                if(result.status==200){
+                    this.hadMemNum=result.data.hadMemNum;
+                }else{
+                    Toast(result.msg);
+                }
+             
+            
+            })
+        },
+        getdeposit(){
+            //充值接口
+            let data = {
+                    openid:this.openid,
+                }
+                deposit(data).then(res => {
                 let result=res.data;
                 if(result.status==0){
                     this.hadMemNum=result.data.hadMemNum;
@@ -94,8 +112,6 @@ export default {
                 }
              
             
-            }).catch(err => {
-                Toast('网络错误，请刷新重试');
             })
         },
         getUrlKey (name) {
