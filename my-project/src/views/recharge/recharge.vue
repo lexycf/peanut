@@ -100,23 +100,82 @@ export default {
         },
         getdeposit(){
             //充值接口
+            let totalfee=this.needPay/100;
             let data = {
+                    type:'JSAPI',
+                    body:'花生互助',
                     openid:this.openid,
+                    totalfee:totalfee
                 }
+                data=JSON.stringify(data);
+                console.log(data);
                 deposit(data).then(res => {
                 let result=res.data;
-                if(result.status==0){
-                    this.hadMemNum=result.data.hadMemNum;
+                console.log(result);
+                if(result.status==200){
+                     // 通过接口获取微信支付需要的基础参数
+                    this.onBridgeReady(result);
                 }else{
-                    Toast(result.message);
+                    Toast(result.msg);
                 }
              
             
             })
         },
-        getUrlKey (name) {
-            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
+      // 网页端调起微信支付API
+      isWeixinJSBridge: function () {
+            if (typeof WeixinJSBridge == "undefined") {
+                if (document.addEventListener) {
+                    document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+                } else if (document.attachEvent) {
+                    document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+                    document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+                }
+            } else {
+                this.onBridgeReady();
+            }
         },
+      // 网页端调起微信支付API
+      onBridgeReady: function (data) {
+            //   data:appid, //公众号名称，由商户传入     
+            //        timeStamp, //时间戳，自1970年以来的秒数     
+            //        nonceStr, //随机串     
+            //        package,  
+            //        sign //微信签名 
+            //        prepayid 预下单单号
+            //        partnerid:商户号
+            WeixinJSBridge.invoke(
+                'getBrandWCPayRequest', {
+                    "appId": data.data.appid, //公众号名称，由商户传入     
+                    "timeStamp": data.data.timeStamp, //时间戳，自1970年以来的秒数     
+                    "nonceStr": data.data.nonceStr, //随机串     
+                    "package": data.data.package,
+                    "signType": 'MD5', //微信签名方式    
+                    "paySign": data.data.sign //微信签名 
+                },
+                function (res) {
+                    // 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。 
+                    if (res.err_msg == "get_brand_wcpay_request:ok") {
+                        //location.href = data.data.return_url;
+                        this.$router.push({
+                            path: "/mypeanut"
+                        });
+                    } else if (res.err_msg == "get_brand_wcpay_request:fail") {
+                        alert("支付失败，" + res.err_desc);
+                        var err = res.err_desc;
+                        if (err.indexOf("跨号支付") != -1) {
+                            //展示二维码
+                            
+                        }
+
+                    }
+                }
+            );
+        },
+      getUrlKey(name) {
+        return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[
+          1].replace(/\+/g, '%20')) || null
+      },
         
     }
 }

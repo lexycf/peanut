@@ -13,7 +13,7 @@ export function getBalance(data) {
 //充值
 export function deposit(data) {
   return request({
-    url: '/rest/deposit',
+    url: '/wepay/recharge',
     method: 'post',
     data:data
   })

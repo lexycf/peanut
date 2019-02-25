@@ -215,12 +215,8 @@
   import {
     Toast
   } from "mint-ui";
-  import {
-    joinAjax
-  } from '@/api/order';
-  import {
-    getBalance
-  } from '@/api/user';
+  import {joinAjax} from '@/api/order';
+  import {getBalance} from '@/api/user';
   export default {
     name: 'join',
     data() {
@@ -378,6 +374,7 @@
 
         })
       },
+     
       getUrlKey(name) {
         return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[
           1].replace(/\+/g, '%20')) || null
