@@ -1,62 +1,86 @@
 <template>
-    <div id="accident">
-        <!-- <div class="zm">
-            正面
-            <input type="file" name="image"  id='zm' @change='getFile()'>
-            <img src="" alt="" id='img1'>
-        </div>
-        <div class="fm">
-            反面
-            <input type="file" name="image" id='fm' @change='change_input(2)'>
-            <img src="" alt="" id='img2'>
-        </div> -->
-
-        <input type="file" @change="getFile(1)">
-        <img :src="src1" alt="" id='img1'>
-        <input type="file" @change="getFile(2)">
-        <img :src="src2" alt="" id='img2'>
-        
+  <div id="accident">
+    <div class="wrapper">
+      <i class="icon-pic"></i>相关照片
+      <button type="button" @click="change_input()">上传照片</button>
+      <form id="addTextForm" @change="setImg($event)">
+      </form>
     </div>
+    <div id="img-wrapper" @click="deleteImg($event)"></div>
+    <div class="btn-wrapper">
+      <div type="primary" @click="submit()">提交</div>
+    </div>
+  </div>
 </template>
 
 <script>
-      
-    
-    export default {
-      name: 'accident',
-      // 定义数据
-      data () {
-        return {
-            src1:'',
-            src2:'',
-            imgNum:4,    //上传的照片数量，可根据实际情况自定义        
+  function getFileUrl(obj) {
+    let url;
+    url = window.URL.createObjectURL(obj.files.item(0));
+    return url;
+  }
+
+  export default {
+    name: 'accident',
+    // 定义数据
+    data() {
+      return {
+        imgNum: 4, //上传的照片数量，可根据实际情况自定义    
+      }
+    }, //定义事件
+    methods: {
+      //根据点击上传按钮触发input
+      change_input() {
+        let inputArr = $('#addTextForm input');
+        let add_inputId = ''; //需要被触发的input
+        for (let i = 0; i < inputArr.length; i++) {
+          // 根据input的value值判断是否已经选择文件
+          if (!inputArr[i].value) { //如果没有选择,获得这个input的ID      
+            add_inputId = inputArr[i].id;
+            break;
+          }
         }
-       },//定义事件
-       methods:{
-            getFile(type) {
-                let event = event || window.event;
-                let reader = new FileReader();
-                let files = event.target.files[0];
-                reader.readAsDataURL(files);//发起异步请求
-                let _this=this;
-                reader.onload = function(){
-                    //读取完成后，将结果赋值给img的src
-                    console.log(this.result);
-                    if(type==1){
-                        _this.src1=this.result;
-                    }else if(type==2){
-                        _this.src2=this.result;
-                    }
-                    
-                    
-                }
-            },
-        
-          
-       },
-      //页面加载后执行
-      mounted(){
-        
+        if (add_inputId) { //如果需要被触发的input ID存在,将对应的input触发
+          return $("#" + add_inputId).click();
+        } else {
+          alert("最多选择" + this.imgNum + "张图片")
+        }
       },
-    }
-    </script>
+      //当input选择了图片的时候触发,将获得的src赋值到相对应的img
+      setImg(e) {
+        let target = e.target;
+        $('#img_' + target.id).attr('src', getFileUrl(e.srcElement));
+      },
+      //点击图片删除该图片并清除相对的input
+      deleteImg(e) {
+        let target = e.target;
+        let inputID = ''; //需要清除value的input
+        if (target.nodeName == 'IMG') {
+          target.src = '';
+          inputID = target.id.replace('img_', ''); //获得需要清除value的input
+          $('input#' + inputID).val("");
+        }
+      },
+
+
+    },
+    //页面加载后执行
+    mounted() {
+      for (let i = 0; i < this.imgNum; i++) {
+        //生成input框，默认为1
+        let my_input = $('<input type="file" name="image" />'); //创建一个input
+        my_input.attr('id', i); //为创建的input添加id
+        $('#addTextForm').append(my_input); //将生成的input追加到指定的form
+        //生成img，默认为1
+        let my_img = $('<img src="">');
+        my_img.attr('id', 'img_' + i);
+        my_img.css({
+          "max-width": "50%",
+          "max-height": "200px"
+        }); //添加样式，由于vue的执行机制，页面加载的时候img标签还没有生成，直接写在style样式会不生效
+        $('#img-wrapper').append(my_img);
+      }
+    },
+  }
+
+</script>
