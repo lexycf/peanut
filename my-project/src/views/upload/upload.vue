@@ -6,12 +6,13 @@
             <div class="up">
                 <div class="upl">
                     <span></span><p>手机正面照片</p>
-                    <input  ref="files" type="file" class='inp'  accept="image/*" multiple="multiple" @change="getFile($event)" >
-                    <img src="" alt="" id='phone1' class='imgs'>
+                    <input  ref="files" type="file" class='inp'  accept="image/*" multiple="multiple" @change="getFile(1)" >
+                    <img :src="phone1" alt="" id='phone1' class='imgs'>
                 </div>
                 <div class="upl">
-                    <span></span><p>手机背面照片</p><input  ref="files" type="file" class='inp'>
-                    <img src="" alt="" id='phone2' class='imgs'>
+                    <span></span><p>手机背面照片</p>
+                    <input  ref="files" type="file" class='inp'  accept="image/*" multiple="multiple" @change="getFile(2)" >
+                    <img :src="phone2" alt="" id='phone2' class='imgs'>
                 </div>
             </div>
         </div>
@@ -46,13 +47,30 @@ export default {
     name:'upload',
     data () {
         return {
-            imgNum:4,    //上传的照片数量，可根据实际情况自定义        
+            imgNum:4,    //上传的照片数量，可根据实际情况自定义  
+            phone1:'' ,
+            phone2:''       
         }
     },
     methods:{
-         uploadFun(){
-            
-        },
+         getFile(type) {
+                let event = event || window.event;
+                let reader = new FileReader();
+                let files = event.target.files[0];
+                reader.readAsDataURL(files);//发起异步请求
+                let _this=this;
+                reader.onload = function(){
+                    //读取完成后，将结果赋值给img的src
+                    console.log(this.result);
+                    if(type==1){
+                        _this.phone1=this.result;
+                    }else if(type==2){
+                        _this.phone2=this.result;
+                    }
+                   
+                    
+                }
+            },
        
     },
 }

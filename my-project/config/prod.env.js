@@ -2,5 +2,5 @@
 module.exports = {
   NODE_ENV: '"production"',
   ENV_CONFIG: '"prod"',
-  BASE_API: '"http://www.huashenghuzhu.com:8085/sphz"',
+  BASE_API: '"http://www.huashenghuzhu.com/sphz"',
 }

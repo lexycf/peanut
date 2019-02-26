@@ -11,8 +11,10 @@
             <img src="" alt="" id='img2'>
         </div> -->
 
-        <input type="file" @change="getFile">
+        <input type="file" @change="getFile(1)">
         <img :src="src1" alt="" id='img1'>
+        <input type="file" @change="getFile(2)">
+        <img :src="src2" alt="" id='img2'>
         
     </div>
 </template>
@@ -26,19 +28,26 @@
       data () {
         return {
             src1:'',
+            src2:'',
             imgNum:4,    //上传的照片数量，可根据实际情况自定义        
         }
        },//定义事件
        methods:{
-            getFile(e) {
+            getFile(type) {
+                let event = event || window.event;
                 let reader = new FileReader();
-                let files = e.target.files[0];
+                let files = event.target.files[0];
                 reader.readAsDataURL(files);//发起异步请求
                 let _this=this;
                 reader.onload = function(){
                     //读取完成后，将结果赋值给img的src
                     console.log(this.result);
-                    _this.src1=this.result;
+                    if(type==1){
+                        _this.src1=this.result;
+                    }else if(type==2){
+                        _this.src2=this.result;
+                    }
+                    
                     
                 }
             },
