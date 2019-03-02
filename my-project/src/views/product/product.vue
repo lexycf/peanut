@@ -206,29 +206,53 @@ export default {
     data(){
         return {
             hadMemNum:0,
-            openid:''
+            openid:'',
+            signature:'',
+            appid:'',
+            jsapi_ticket:'',
+            noncestr:'',
+            timestamp:''
         }
     },
     methods:{
         getwxParam(){
+            
             let url=location.href;
             let data={
                     openid:this.openid,
                     url:url
                 }
-               
                 data=JSON.stringify(data);
                 console.log(data);
                 shareurl(data).then(res => {
                 let result=res.data;
                 if(result.status==200){
-                    this.hadMemNum=result.data.members;
+                    this.signature =result.data.signature;
+                    this.appid=result.data.appid;
+                    this.jsapi_ticket=result.data.jsapi_ticket;
+                    this.noncestr=result.data.noncestr;
+                    this.timestamp=result.data.timestamp;
+                    this.shareFun();
                 }else{
                     Toast(result.msg);
                 }
              
             
             })
+        },
+        shareFun(){
+            let shareurl=location.href;
+            var param = {
+                appId: this.appid, // 必填，公众号的唯一标识
+                timestamp: this.timestamp, // 必填，生成签名的时间戳
+                nonceStr: this.nonceStr, // 必填，生成签名的随机串
+                signature: this.signature, // 必填，签名，见附录1
+                title: '分享标题',
+                desc: '分享描述',
+                link:shareurl,
+                imgUrl: ''
+            };
+            pub(param);
         },
 
          getMemberNumFun(){

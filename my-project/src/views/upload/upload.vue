@@ -37,7 +37,7 @@
             <div class="t">1&nbsp;其他证明材料</div>
             <div class="up">
                 <div class="imgsBox">
-                    <div class="img-ul" v-for="item in imgsarr" :key="item.idx"><img :src="item" alt=""></div>
+                    <div class="img-ul" v-for="(item,key) in imgsarr" :key="item.index"><img :src="item" alt="" @click='delPicFun(key)'></div>
                 </div>
                 <div class="upl"><div class="jia">＋</div><input  ref="files" type="file" class='inp' @change="getFile2()"></div>
             </div>
@@ -123,6 +123,10 @@ export default {
                 Toast('网络错误，请刷新重试');
             })
         },
+        delPicFun(idx){
+            console.log(idx);
+            this.imgsarr.splice(idx,1);
+        }
        
     },
 }

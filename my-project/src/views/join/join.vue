@@ -55,7 +55,7 @@
       </div>
       <div class="footer">
         <div class="ft_box">
-          <span class="hadsel"></span>
+          <span @click='readFun()' :class="read ? 'hadsel' : ''"></span>
         </div>
         <div class="ft_txt">
           我已阅读<i @click='hideBoxFun("show",3)'>《手机设备要求》</i><i @click='hideBoxFun("show",2)'>《会员公约》</i>及<i @click='hideBoxFun("show",4)'>《计划条款》</i>，并承诺加入时手机无任何故障。
@@ -242,7 +242,8 @@
         hideboxStyle2: 'hide',
         hideboxStyle3: 'hide',
         hideboxStyle4: 'hide',
-        openid: ''
+        openid: '',
+        read:false
       }
     },
     created() {
@@ -261,6 +262,13 @@
         this.needPay = 6;
         this.getopenid();
         
+      },
+      readFun(){
+        if(this.read){
+          this.read=false;
+        }else{
+          this.read=true;
+        }
       },
       addClass: function (index) {
         this.current = index;
@@ -347,7 +355,10 @@
         } else if (this.eqNum == "") {
           Toast('请输入IMEI设备号');
           return false;
-        } else {
+        } else if(!this.read){
+          Toast('请勾选已阅读按钮');
+          return false;
+        }else{
           this.joinAjaxFun();
         }
       },
@@ -362,7 +373,6 @@
             openid:this.openid
         }
         data=JSON.stringify(data);
-        console.log(typeof(data));
         joinAjax(data).then(res => {
           let result = res.data;
           if (result.status == 200) {
