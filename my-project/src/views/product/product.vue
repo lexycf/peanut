@@ -184,7 +184,7 @@
             <div class="conBox"><img src="../../../static/image/product/wx.png" alt="">微信咨询</div> -->
         </div>
         <div class="joinBox">
-            <div class="joinBtn"><router-link to="/join" class='links'></router-link>立刻加入</div>
+            <div class="joinBtn"><router-link  :to="{path:'/join', query:{openid:openid}}" class='links'></router-link>立刻加入</div>
             <div class="joinleft"><img src="../../../static/image/product/jt.png" alt="">分享</div>
         </div>
     </div>
@@ -192,13 +192,15 @@
 <script>
 require('./product.less');
 import { Toast } from "mint-ui";
+import Cookies from 'js-cookie';
 import { getMemberNum} from '@/api/index';
 import { shareurl} from '@/api/wxapi';
 export default {
     name:'product',
     created(){
         this.getMemberNumFun();
-        this.openid=this.getUrlKey('openid');
+        this.getopenid();
+        
         this.getwxParam();
     },
     data(){
@@ -246,7 +248,7 @@ export default {
         },
         getPaidOrderNumFun(){
             let data={
-                openid:this.openid
+                    openid:this.openid
                 }
             getPaidOrderNum(data).then(res => {
                 let result=res.data;
@@ -258,6 +260,15 @@ export default {
              
             
             })
+        },
+        getopenid(){
+            let openid=Cookies.get('openid');
+            if(!openid){
+                this.openid = this.getUrlKey('openid');
+            }else{
+                this.openid=openid;
+            }
+            console.log(this.openid);
         },
        
         getUrlKey (name) {

@@ -6,12 +6,12 @@
             <div class="up">
                 <div class="upl">
                     <span></span><p>手机正面照片</p>
-                    <input  ref="files" type="file" class='inp'  accept="image/*" multiple="multiple" @change="getFile(1)" >
+                    <input  ref="files" type="file" class='inp'  accept="image/*" multiple="multiple" @change="getFile(1,'手机正面')" >
                     <img :src="phone1" alt="" id='phone1' class='imgs'>
                 </div>
                 <div class="upl">
                     <span></span><p>手机背面照片</p>
-                    <input  ref="files" type="file" class='inp'  accept="image/*" multiple="multiple" @change="getFile(2)" >
+                    <input  ref="files" type="file" class='inp'  accept="image/*" multiple="multiple" @change="getFile(2,'手机反面')" >
                     <img :src="phone2" alt="" id='phone2' class='imgs'>
                 </div>
             </div>
@@ -22,12 +22,12 @@
             <div class="up">
                 <div class="upl">
                     <span></span><p>发票正面照片</p>
-                    <input  ref="files" type="file" class='inp'  accept="image/*" multiple="multiple" @change="getFile(3)" >
+                    <input  ref="files" type="file" class='inp'  accept="image/*" multiple="multiple" @change="getFile(3,'发票正面')" >
                     <img :src="phone3" alt="" id='phone3' class='imgs'>
                 </div>
                 <div class="upl">
                     <span></span><p>发票背面照片</p>
-                    <input  ref="files" type="file" class='inp'  accept="image/*" multiple="multiple" @change="getFile(4)" >
+                    <input  ref="files" type="file" class='inp'  accept="image/*" multiple="multiple" @change="getFile(4,'发票反面')" >
                     <img :src="phone4" alt="" id='phone4' class='imgs'>
                 </div>
             </div>
@@ -48,11 +48,8 @@
 </template>
 <script>
 require('./upload.less');
-function getFileUrl(obj) { 
-    let url; 
-    url = window.URL.createObjectURL(obj.files.item(0)); 
-    return url; 
-}
+import { Toast } from "mint-ui";
+import { uploadPic} from '@/api/order';
 export default {
     name:'upload',
     data () {
@@ -67,42 +64,65 @@ export default {
         }
     },
     methods:{
-         getFile(type) {
-                let event = event || window.event;
-                let reader = new FileReader();
-                let files = event.target.files[0];
-                reader.readAsDataURL(files);//发起异步请求
-                let _this=this;
-                reader.onload = function(){
-                    //读取完成后，将结果赋值给img的src
-                    console.log(this.result);
-                    _this['phone'+type]=this.result;
-                   
-                    
+         getFile(type,picName) {
+            let event = event || window.event;
+            let reader = new FileReader();
+            let files = event.target.files[0];
+            reader.readAsDataURL(files);//发起异步请求
+            let _this=this;
+            reader.onload = function(){
+                //读取完成后，将结果赋值给img的src
+                console.log(this.result);
+                _this['phone'+type]=this.result;
+                let imgsrc=this.result;
+                if(_this['phone'+type]!=''){
+                    _this.uploadPicFun(imgsrc,picName);
                 }
-            },
-            getFile2() {
-                if(this.imgsarr.length>4){
-                    
+                
+                
+            }
+        },
+        getFile2() {
+            if(this.imgsarr.length>4){
+                Toast('最多可上传4张图片');
+            }
+            let event = event || window.event;
+            let reader = new FileReader();
+            let files = event.target.files[0];
+            reader.readAsDataURL(files);//发起异步请求
+            let _this=this;
+            reader.onload = function(){
+                //读取完成后，将结果赋值给img的src
+                //console.log(this.result);
+                let imgsarr=[];
+                imgsarr=_this.imgsarr;
+                console.log(imgsarr)
+                imgsarr.push(this.result);
+                _this.imgsarr=imgsarr;
+                console.log(_this.imgsarr);
+                _this.uploadPicFun(this.result,'其他材料');
+                
+                
+            }
+        },
+        uploadPicFun(file,picName){
+            let data = {
+                    file:file,
+                    openid:this.openid,
+                    picName:picName
                 }
-                let event = event || window.event;
-                let reader = new FileReader();
-                let files = event.target.files[0];
-                reader.readAsDataURL(files);//发起异步请求
-                let _this=this;
-                reader.onload = function(){
-                    //读取完成后，将结果赋值给img的src
-                    //console.log(this.result);
-                    let imgsarr=[];
-                    imgsarr=_this.imgsarr;
-                    console.log(imgsarr)
-                    imgsarr.push(this.result);
-                    _this.imgsarr=imgsarr;
-                    console.log(_this.imgsarr);
-                   
-                    
+                uploadPic(data).then(res => {
+                let result=res.data;
+                if(result.status==200){
+                    this.recordList=result.data.orders;
+                }else{
+                    Toast(result.msg);
                 }
-            },
+            
+            }).catch(err => {
+                Toast('网络错误，请刷新重试');
+            })
+        },
        
     },
 }

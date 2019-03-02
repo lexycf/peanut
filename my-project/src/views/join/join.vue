@@ -212,6 +212,7 @@
 </template>
 <script>
   require('./join.less');
+  import Cookies from 'js-cookie';
   import {
     Toast
   } from "mint-ui";
@@ -258,7 +259,8 @@
       defaultFun() {
         this.choose2 = 'active';
         this.needPay = 6;
-        this.openid = this.getUrlKey('openid');
+        this.getopenid();
+        
       },
       addClass: function (index) {
         this.current = index;
@@ -374,7 +376,15 @@
 
         })
       },
-     
+      getopenid(){
+            let openid=Cookies.get('openid');
+            if(!openid){
+                this.openid = this.getUrlKey('openid');
+            }else{
+                this.openid=openid;
+            }
+            console.log(this.openid);
+        },
       getUrlKey(name) {
         return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[
           1].replace(/\+/g, '%20')) || null

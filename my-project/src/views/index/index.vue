@@ -32,7 +32,7 @@
         <div class="cont2">
             <div class="tit">互助计划</div>
             <div class="bt">
-                <router-link to="/product" class='links'></router-link>
+                <router-link :to="{path:'/product', query:{openid:openid}}" class='links'></router-link>
                 <div class="imgbox"><img src="../../../static/image/index/images/img3_03.png" alt=""></div>
                 <div class="txt">
                     <h1>手机碎屏互助计划</h1>
@@ -100,7 +100,7 @@ export default {
     created(){
         this.getMemberNumFun();
         this.getPaidOrderNumFun();
-        this.openid=this.getUrlKey('openid');
+        this.getOpenid();
     },
     data(){
         return {
@@ -112,8 +112,7 @@ export default {
     methods:{
          getMemberNumFun(){
             let data={
-                    openid:this.openid,
-                    aaa:'aaa'
+                    openid:this.openid
                 }
             getMemberNum(data).then(res => {
                 let result=res.data;
@@ -128,7 +127,7 @@ export default {
         },
         getPaidOrderNumFun(){
             let data={
-                openid:this.openid
+                    openid:this.openid
                 }
             getPaidOrderNum(data).then(res => {
                 let result=res.data;
@@ -143,6 +142,7 @@ export default {
         },
         getOpenid(){
             var openid=this.getUrlKey('openid');
+            this.openid=openid;
             Cookies.set('openid', openid);
         },
         getUrlKey (name) {

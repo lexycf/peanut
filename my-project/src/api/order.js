@@ -18,4 +18,13 @@ export function useCoupon(data) {
   })
 }
 
+//上传图片
+export function uploadPic(data) {
+  return request({
+    url: '/rest/uploadPic',
+    method: 'post',
+    data:data
+  })
+}
+
  
