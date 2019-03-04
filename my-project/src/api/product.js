@@ -22,6 +22,6 @@ export function storeShowInfo(data) {
     return request({
       url: '/invite/storeShowInfo',
       method: 'get',
-      data:data
+      params: data
     })
   }

@@ -27,4 +27,13 @@ export function uploadPic(data) {
   })
 }
 
+//删除图片
+export function delPic(data) {
+  return request({
+    url: '/rest/delPic',
+    method: 'post',
+    data:data
+  })
+}
+
  

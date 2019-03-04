@@ -76,7 +76,7 @@ export default {
             let data = {
                     openid:this.openid
                 }
-            getBalance().then(res => {
+            getBalance(data).then(res => {
                 let result=res.data;
                 if(result.status==0){
                     this.balance=result.data.balance;

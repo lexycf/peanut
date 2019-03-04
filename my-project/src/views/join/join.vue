@@ -372,7 +372,6 @@
             price: this.priceIdx,
             openid:this.openid
         }
-        data=JSON.stringify(data);
         joinAjax(data).then(res => {
           let result = res.data;
           if (result.status == 200) {

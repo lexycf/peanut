@@ -6,7 +6,7 @@ export function getBalance(data) {
   return request({
     url: '/rest/getBalance',
     method: 'get',
-    data:data
+    params: data
   })
 }
 

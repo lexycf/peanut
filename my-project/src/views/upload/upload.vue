@@ -49,7 +49,7 @@
 <script>
 require('./upload.less');
 import { Toast } from "mint-ui";
-import { uploadPic} from '@/api/order';
+import { uploadPic,delPic} from '@/api/order';
 export default {
     name:'upload',
     data () {
@@ -85,6 +85,7 @@ export default {
         getFile2() {
             if(this.imgsarr.length>4){
                 Toast('最多可上传4张图片');
+                return false;
             }
             let event = event || window.event;
             let reader = new FileReader();
@@ -126,6 +127,21 @@ export default {
         delPicFun(idx){
             console.log(idx);
             this.imgsarr.splice(idx,1);
+            let data = {
+                    openid:this.openid,
+                    picName:picName
+                }
+                delPic(data).then(res => {
+                let result=res.data;
+                if(result.status==200){
+                    this.recordList=result.data.orders;
+                }else{
+                    Toast(result.msg);
+                }
+            
+            }).catch(err => {
+                Toast('网络错误，请刷新重试');
+            })
         }
        
     },

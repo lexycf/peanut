@@ -185,7 +185,7 @@
         </div>
         <div class="joinBox">
             <div class="joinBtn"><router-link  :to="{path:'/join', query:{openid:openid}}" class='links'></router-link>立刻加入</div>
-            <div class="joinleft"><img src="../../../static/image/product/jt.png" alt="">分享</div>
+            <div class="joinleft" @click='shareFun()'><img src="../../../static/image/product/jt.png" alt="">分享</div>
         </div>
     </div>
 </template>
@@ -222,7 +222,6 @@ export default {
                     openid:this.openid,
                     url:url
                 }
-                data=JSON.stringify(data);
                 console.log(data);
                 shareurl(data).then(res => {
                 let result=res.data;
@@ -232,7 +231,6 @@ export default {
                     this.jsapi_ticket=result.data.jsapi_ticket;
                     this.noncestr=result.data.noncestr;
                     this.timestamp=result.data.timestamp;
-                    this.shareFun();
                 }else{
                     Toast(result.msg);
                 }

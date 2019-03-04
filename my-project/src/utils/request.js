@@ -7,7 +7,7 @@ import store from '@/store'
 const service = axios.create({
   baseURL: process.env.BASE_API, // api的base_url
   timeout: 5000, // request timeout
-  headers: { 'Content-Type': 'application/json' },
+  headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
   withCredentials: true,
   transformRequest: [(data) => {
     // data['xhrFields'] = { withCredentials: true }
@@ -31,10 +31,29 @@ service.interceptors.request.use(
     Promise.reject(error)
   }
 )
+let SESSION_EX_DIALOG_FLAG = false;
 
 // respone interceptor
 service.interceptors.response.use(
-  response => response,
+  response => {
+    if(response.status == 200 && response.data.code == 10)
+    {
+      // alert("没有登录");
+      if(!SESSION_EX_DIALOG_FLAG && window.location.href.toLocaleLowerCase().indexOf("bitcoin") < 0)
+      {
+        setTimeout(() => {
+          window.location.href="/bitcoin?furl=" + encodeURIComponent(window.location.pathname);
+        }, 2000);
+        SESSION_EX_DIALOG_FLAG = true
+        setTimeout(() => {
+          SESSION_EX_DIALOG_FLAG = false;
+        }, 5000);
+        return;
+      }
+    }
+
+    return response;
+  },
   /**
    * 下面的注释为通过在response里，自定义code来标示请求状态
    * 当code返回如下情况则说明权限有问题，登出并返回到登录页

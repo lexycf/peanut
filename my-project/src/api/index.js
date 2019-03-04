@@ -5,7 +5,7 @@ export function getMemberNum(data) {
     return request({
       url: '/rest/getMemberNum',
       method: 'get',
-      data:data
+      params: data
     })
   }
 
@@ -15,7 +15,7 @@ export function getPaidOrderNum(data) {
   return request({
     url: '/rest/getPaidOrderNum',
     method: 'get',
-    data:data
+    params: data
   })
 }
 

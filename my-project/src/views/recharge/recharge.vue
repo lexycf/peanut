@@ -107,7 +107,6 @@ export default {
                     openid:this.openid,
                     totalfee:totalfee
                 }
-                data=JSON.stringify(data);
                 console.log(data);
                 deposit(data).then(res => {
                 let result=res.data;
