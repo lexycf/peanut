@@ -1,6 +1,6 @@
 <template>
     <div class="mypeanutbox">
-        <div class="headerBox"><a href='' class='record'>互助记录>></a><div class="heads"><img src="./img/icon1.png" alt="">&nbsp;微信昵称</div></div>
+        <div class="headerBox"><router-link to="/redexchange" class='links'>互助记录>></router-link><div class="heads"><img src="./img/icon1.png" alt="">&nbsp;微信昵称</div></div>
         <div class="cont1">
             <div class="cont1_top">
                 <div class="top_left"><h1>账户余额<i>{{balance}}</i>元</h1></div>
@@ -55,9 +55,9 @@ import { getBalance} from '@/api/user';
 export default {
     name:'mypeanut',
     created(){
-        this.getBalanceFun();
+        
         this.defaultFun();
-        this.openid=this.getUrlKey('openid');
+        
     },
     data(){
         return {
@@ -69,7 +69,8 @@ export default {
     },
     methods:{
         defaultFun(){
-            
+            this.getBalanceFun();
+            this.openid=this.getUrlKey('openid');
         },
         
          getBalanceFun(){

@@ -11,6 +11,7 @@
 </template>
 <script>
 require('./redexchange.less');
+import Cookies from 'js-cookie';
 import { Toast } from "mint-ui";
 import { useCoupon} from '@/api/order';
 export default {
@@ -23,10 +24,18 @@ export default {
         }
     },
     created(){
-       
-        this.openid=this.getUrlKey('openid');
+        this.getopenid();
     },
     methods:{
+        getopenid(){
+            let openid=Cookies.get('openid');
+            if(!openid){
+                this.openid = this.getUrlKey('openid');
+            }else{
+                this.openid=openid;
+            }
+            console.log(this.openid);
+        },
         exchangeFun(){
             if(this.redCode==''){
                 Toast('红包兑换码不能为空');
@@ -37,10 +46,12 @@ export default {
                 openid:this.openid
             }
             
-             getBalance().then(res => {
+            useCoupon(data).then(res => {
                 let result=res.data;
-                if(result.status==0){
-                    
+                if(result.status==200){
+                    this.$router.push({
+                        path: "/exchangesuc"
+                    });
                 }else{
                     Toast(result.msg);
                 }

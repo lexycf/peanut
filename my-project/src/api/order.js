@@ -13,8 +13,8 @@ export function joinAjax(data) {
 export function useCoupon(data) {
   return request({
     url: '/rest/useCoupon',
-    method: 'post',
-    data:data
+    method: 'get',
+    params:data
   })
 }
 
