@@ -100,7 +100,7 @@ export default {
         },
         getdeposit(){
             //充值接口
-            let totalfee=this.needPay/100;
+            let totalfee=this.needPay*100;
             let data = {
                     type:'JSAPI',
                     body:'花生互助',
