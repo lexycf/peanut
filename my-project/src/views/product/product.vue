@@ -233,7 +233,7 @@ export default {
         getwxParam(){
             console.log(this.isIosOrAndroid());
             //encodeURIComponent(this.isIosOrAndroid() === 'android' ? location.href.split('#')[0] : window.location.href)
-            let url=window.location.href;
+            let url=encodeURIComponent(this.isIosOrAndroid() === 'android' ? location.href.split('#')[0] : window.location.href);
             console.log(url);
             let data={
                     openid:this.openid,
