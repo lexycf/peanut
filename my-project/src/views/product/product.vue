@@ -198,10 +198,10 @@ import { shareurl} from '@/api/wxapi';
 export default {
     name:'product',
     created(){
-        this.getMemberNumFun();
         this.getopenid();
-        
         this.getwxParam();
+        this.getMemberNumFun();
+        alert(location.href.split('#')[0])
     },
     data(){
         return {
@@ -215,27 +215,41 @@ export default {
         }
     },
     methods:{
+        
+        // 判断ios还是android
+        isIosOrAndroid () {
+            let u = navigator.userAgent;
+            let isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1 // android终端
+            let isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/) // ios终端
+            let isStr = ''
+            if (isAndroid) {
+            isStr = 'android'
+            }
+            if (isiOS) {
+            isStr = 'ios'
+            }
+            return isStr
+        },
         getwxParam(){
-            
-            let url=location.href;
+            console.log(this.isIosOrAndroid());
+            //encodeURIComponent(this.isIosOrAndroid() === 'android' ? location.href.split('#')[0] : window.location.href)
+            let url=window.location.href;
+            console.log(url);
             let data={
                     openid:this.openid,
                     url:url
                 }
-                console.log(data);
                 shareurl(data).then(res => {
-                let result=res.data;
-                if(result.status==200){
-                    this.signature =result.data.signature;
-                    this.appid=result.data.appid;
-                    this.jsapi_ticket=result.data.jsapi_ticket;
-                    this.noncestr=result.data.noncestr;
-                    this.timestamp=result.data.timestamp;
-                }else{
-                    Toast(result.msg);
-                }
-             
-            
+                    let result=res.data;
+                    if(result.code==200){
+                        this.signature =result.data.signature;
+                        this.appid=result.data.appid;
+                        this.jsapi_ticket=result.data.jsapi_ticket;
+                        this.noncestr=result.data.noncestr;
+                        this.timestamp=result.data.timestamp;
+                    }else{
+                        Toast(result.msg);
+                    }
             })
         },
         shareFun(){

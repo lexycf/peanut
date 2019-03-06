@@ -21,3 +21,10 @@ new Vue({
    },
   template: '<App/>'
 })
+
+router.beforeEach((to, from, next) => {
+  if (!window.initUrl) {
+    window.initUrl = location.href.split('#')[0]
+  }
+  next()
+})
