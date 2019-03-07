@@ -42,10 +42,9 @@ import { getBalance,deposit} from '@/api/user';
 export default {
     name:'recharge',
      created(){
-        this.getBalanceFun();
         this.defaultFun();
-       
         this.openid=this.getUrlKey('openid');
+        this.getBalanceFun();
     },
     data(){
         return {
@@ -111,7 +110,7 @@ export default {
                 deposit(data).then(res => {
                 let result=res.data;
                 console.log(result);
-                if(result.status==200){
+                if(result.code==200){
                      // 通过接口获取微信支付需要的基础参数
                     this.onBridgeReady(result);
                 }else{
