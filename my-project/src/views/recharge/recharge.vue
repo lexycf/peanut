@@ -146,7 +146,7 @@ export default {
                 'getBrandWCPayRequest', {
                     "appId": data.data.appid, //公众号名称，由商户传入     
                     "timeStamp": data.data.timeStamp, //时间戳，自1970年以来的秒数     
-                    "nonceStr": data.data.nonceStr, //随机串     
+                    "nonceStr": data.data.noncestr, //随机串     
                     "package": data.data.package,
                     "signType": 'MD5', //微信签名方式    
                     "paySign": data.data.sign //微信签名 
