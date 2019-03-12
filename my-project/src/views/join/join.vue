@@ -310,8 +310,8 @@
         }
         getBalance(data).then(res => {
           let result = res.data;
-          if (result.status == 0) {
-            this.balance = result.data.balance;
+          if (result.status == 200) {
+            this.balance = result.data.mount;
           } else {
             Toast(result.msg);
           }
@@ -386,13 +386,14 @@
         })
       },
       getopenid(){
-            let openid=Cookies.get('openid');
+        let openid=Cookies.get('openid');
             if(!openid){
                 this.openid = this.getUrlKey('openid');
             }else{
                 this.openid=openid;
             }
             console.log(this.openid);
+            Cookies.set('openid', this.openid);
         },
       getUrlKey(name) {
         return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[

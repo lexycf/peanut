@@ -98,9 +98,10 @@ import { getMemberNum,getPaidOrderNum} from '@/api/index';
 export default {
     name:'index',
     created(){
+        this.getOpenid();
         this.getMemberNumFun();
         this.getPaidOrderNumFun();
-        this.getOpenid();
+        
     },
     data(){
         return {
@@ -141,9 +142,14 @@ export default {
             })
         },
         getOpenid(){
-            var openid=this.getUrlKey('openid');
-            this.openid=openid;
-            Cookies.set('openid', openid);
+            let openid=Cookies.get('openid');
+            if(!openid){
+                this.openid = this.getUrlKey('openid');
+            }else{
+                this.openid=openid;
+            }
+            console.log(this.openid);
+            Cookies.set('openid', this.openid);
         },
         getUrlKey (name) {
             return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null

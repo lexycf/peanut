@@ -198,10 +198,9 @@ import { shareurl} from '@/api/wxapi';
 export default {
     name:'product',
     created(){
-        this.getopenid();
+        this.getOpenid();
         this.getwxParam();
         this.getMemberNumFun();
-        alert(location.href.split('#')[0])
     },
     data(){
         return {
@@ -297,7 +296,7 @@ export default {
             
             })
         },
-        getopenid(){
+        getOpenid(){
             let openid=Cookies.get('openid');
             if(!openid){
                 this.openid = this.getUrlKey('openid');
@@ -305,6 +304,7 @@ export default {
                 this.openid=openid;
             }
             console.log(this.openid);
+            Cookies.set('openid', this.openid);
         },
        
         getUrlKey (name) {

@@ -1,23 +1,23 @@
 <template>
     <div class="mypeanutbox">
-        <div class="headerBox"><router-link to="/redexchange" class='links'>互助记录>></router-link><div class="heads"><img src="./img/icon1.png" alt="">&nbsp;微信昵称</div></div>
+        <div class="headerBox"><router-link to="/redexchange" class='record'>互助记录>></router-link><div class="heads"><img src="./img/icon1.png" alt="">&nbsp;微信昵称</div></div>
         <div class="cont1">
             <div class="cont1_top">
                 <div class="top_left"><h1>账户余额<i>{{balance}}</i>元</h1></div>
-                <div class="top_right">申请互助金</div>
+                <div class="top_right"><router-link :to="{path:'/upload', query:{openid:openid}}" class='links'></router-link>申请互助金</div>
             </div>
             <div class="cont1_bottom">
                 <!-- <div class="smallbox">
                     <p><router-link to="/orderdetail" class='links'></router-link>补充资料</p>
                 </div> -->
                 <div class="smallbox">
-                    <p><router-link to="/redexchange" class='links'></router-link>红包兑换</p>
+                    <p><router-link :to="{path:'/redexchange', query:{openid:openid}}" class='links'></router-link>红包兑换</p>
                 </div>
                 <div class="smallbox">
-                    <p>邀请好友</p>
+                    <p><router-link :to="{path:'/invite', query:{openid:openid}}" class='links'></router-link>邀请好友</p>
                 </div>
                 <div class="smallbox">
-                    <p><router-link to="/recharge" class='links'></router-link>计划充值</p>
+                    <p><router-link :to="{path:'/recharge', query:{openid:openid}}" class='links'></router-link>计划充值</p>
                 </div>  
             </div>
         </div>
@@ -51,11 +51,12 @@
 <script>
 require('./mypeanut.less');
 import { Toast } from "mint-ui";
+import Cookies from 'js-cookie';
 import { getBalance} from '@/api/user';
 export default {
     name:'mypeanut',
     created(){
-        
+        this.getOpenid();
         this.defaultFun();
         
     },
@@ -72,15 +73,24 @@ export default {
             this.getBalanceFun();
             this.openid=this.getUrlKey('openid');
         },
-        
+        getOpenid(){
+            let openid=Cookies.get('openid');
+            if(!openid){
+                this.openid = this.getUrlKey('openid');
+            }else{
+                this.openid=openid;
+            }
+            console.log(this.openid);
+            Cookies.set('openid', this.openid);
+        },
          getBalanceFun(){
             let data = {
                     openid:this.openid
                 }
             getBalance(data).then(res => {
                 let result=res.data;
-                if(result.status==0){
-                    this.balance=result.data.balance;
+                if(result.status==200){
+                    this.balance=result.data.mount;
                 }else{
                     Toast(result.msg);
                 }
