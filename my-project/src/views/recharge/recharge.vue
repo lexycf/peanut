@@ -38,12 +38,13 @@
 <script>
 require('./recharge.less');
 import { Toast } from "mint-ui";
+import Cookies from 'js-cookie';
 import { getBalance,deposit} from '@/api/user';
 export default {
     name:'recharge',
      created(){
         this.defaultFun();
-        this.openid=this.getUrlKey('openid');
+        this.getOpenid();
         this.getBalanceFun();
     },
     data(){
@@ -61,6 +62,16 @@ export default {
         defaultFun(){
             this.choose2='active';
             this.needPay=6;
+        },
+        getOpenid(){
+            let openid=Cookies.get('openid');
+            if(!openid || openid!=null){
+                this.openid = this.getUrlKey('openid');
+            }else{
+                this.openid=openid;
+            }
+            console.log(this.openid);
+            Cookies.set('openid', this.openid);
         },
         chooseFun(type){
             if(type==1){

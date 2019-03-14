@@ -36,4 +36,15 @@ export function delPic(data) {
   })
 }
 
+
+export function getOrderDetail(data) {
+  return request({
+    url: '/rest/getOrderDetail',
+    method: 'get',
+    params:data
+  })
+}
+
+
+
  

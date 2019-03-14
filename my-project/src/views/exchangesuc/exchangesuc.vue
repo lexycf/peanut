@@ -20,9 +20,9 @@ export default {
         }
     },
     methods:{
-        getOpenid(){
-            let openid=Cookies.get('openid');
-            if(!openid){
+        getopenid(){
+        let openid=Cookies.get('openid');
+            if(!openid || openid!=null){
                 this.openid = this.getUrlKey('openid');
             }else{
                 this.openid=openid;

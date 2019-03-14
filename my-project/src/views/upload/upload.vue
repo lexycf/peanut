@@ -43,13 +43,14 @@
             </div>
         </div>
         <div class="clears"></div>
-        <div class="upBtn">上传资料</div>
+        <div class="upBtn" @click='uploadFun()'> 上传资料</div>
     </div>
 </template>
 <script>
 require('./upload.less');
 import { Toast } from "mint-ui";
 import { uploadPic,delPic} from '@/api/order';
+import Cookies from 'js-cookie'
 export default {
     name:'upload',
     data () {
@@ -60,8 +61,12 @@ export default {
             phone3:'',
             phone4:'',
             imgsarr:[],
-            i:0   
+            i:0   ,
+            openid:''
         }
+    },
+    created(){
+        this.getOpenid();
     },
     methods:{
          getFile(type,picName) {
@@ -81,6 +86,7 @@ export default {
                 
                 
             }
+            
         },
         getFile2() {
             if(this.imgsarr.length>4){
@@ -106,6 +112,15 @@ export default {
                 
             }
         },
+        uploadFun(){
+            if(this.phone1=='' && this.phone2=='' && this.phone3=='' && this.phone4=='' && this.imgsarr==''){
+                Toast('请先上传图片');
+            }else{
+                this.$router.push({
+                    path: "/paysuccess?openid=" +this.openid
+                });
+            }
+        },
         uploadPicFun(file,picName){
             let data = {
                     file:file,
@@ -129,7 +144,7 @@ export default {
             this.imgsarr.splice(idx,1);
             let data = {
                     openid:this.openid,
-                    picName:picName
+                    picName:'相关材料'
                 }
                 delPic(data).then(res => {
                 let result=res.data;
@@ -142,7 +157,20 @@ export default {
             }).catch(err => {
                 Toast('网络错误，请刷新重试');
             })
-        }
+        },
+        getOpenid(){
+            let openid=Cookies.get('openid');
+            if(!openid || openid!=null){
+                this.openid = this.getUrlKey('openid');
+            }else{
+                this.openid=openid;
+            }
+            console.log(this.openid);
+            Cookies.set('openid', this.openid);
+        },
+        getUrlKey (name) {
+            return decodeURIComponent((new RegExp('[?|&]' + name + '=' + '([^&;]+?)(&|#|;|$)').exec(location.href) || [, ""])[1].replace(/\+/g, '%20')) || null
+        },
        
     },
 }

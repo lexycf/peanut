@@ -2,7 +2,7 @@
     <div class="paysuccessbox">
         <div class="contbox">
             <img src="../../../static/image/paysuccess/dui.png" alt="">
-            <p>加入成功</p>
+            <p>成功</p>
         </div>
     </div>
 </template>
@@ -23,7 +23,7 @@ export default {
     methods:{
         getOpenid(){
             let openid=Cookies.get('openid');
-            if(!openid){
+            if(!openid || openid!=null){
                 this.openid = this.getUrlKey('openid');
             }else{
                 this.openid=openid;

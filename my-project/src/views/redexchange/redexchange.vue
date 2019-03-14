@@ -29,7 +29,7 @@ export default {
     methods:{
         getopenid(){
             let openid=Cookies.get('openid');
-            if(!openid){
+            if(!openid || openid!=null){
                 this.openid = this.getUrlKey('openid');
             }else{
                 this.openid=openid;

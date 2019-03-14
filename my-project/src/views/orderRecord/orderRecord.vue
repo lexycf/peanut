@@ -5,7 +5,7 @@
     </div>
     <div class="hadData" v-if="recordList.length>0">
         <div class="conts" v-for="item in recordList" :key="item.idx" >
-            <router-link to="/orderdetail" class='links'></router-link>
+            <router-link :to="{path:'/orderdetail', query:{openid:openid,orderid:item.orderid}}" class='links'></router-link>
             <div class="cont1">
                 <p>{{item.applytime}}</p>
             </div>
@@ -85,7 +85,7 @@ export default {
         },
         getOpenid(){
             let openid=Cookies.get('openid');
-            if(!openid){
+            if(!openid || openid!=null){
                 this.openid = this.getUrlKey('openid');
             }else{
                 this.openid=openid;

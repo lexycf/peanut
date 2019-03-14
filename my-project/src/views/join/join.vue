@@ -247,6 +247,7 @@
       }
     },
     created() {
+      this.getopenid();
       this.defaultFun();
       this.getBalanceFun();
     },
@@ -260,8 +261,6 @@
       defaultFun() {
         this.choose2 = 'active';
         this.needPay = 6;
-        this.getopenid();
-        
       },
       readFun(){
         if(this.read){
@@ -359,8 +358,18 @@
           Toast('请勾选已阅读按钮');
           return false;
         }else{
-          this.joinAjaxFun();
+          if(this.balance<300){
+            this.rechargeFun();
+          }else{
+            this.joinAjaxFun();
+          }
+          
         }
+      },
+      rechargeFun(){
+        this.$router.push({
+            path: "/recharge?openid=" +this.openid
+        });
       },
       joinAjaxFun() {
         
@@ -387,7 +396,7 @@
       },
       getopenid(){
         let openid=Cookies.get('openid');
-            if(!openid){
+            if(!openid || openid!=null){
                 this.openid = this.getUrlKey('openid');
             }else{
                 this.openid=openid;
