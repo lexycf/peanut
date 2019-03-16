@@ -14,8 +14,10 @@
                     <input  ref="files" type="file" class='inp'  accept="image/*" multiple="multiple" @change="getFile(2,'手机反面')" >
                     <img :src="phone2" alt="" id='phone2' class='imgs'>
                 </div>
+                <div class="clears"></div>
             </div>
         </div>
+        <div class="des">·正面照片需要是开机照片，请在拨号界面输入*#06#显示手机IMEI号并拍照。</div>
         <div class="clears"></div>
         <div class="loadBox">
             <div class="t">1&nbsp;购机发票</div>
@@ -30,8 +32,10 @@
                     <input  ref="files" type="file" class='inp'  accept="image/*" multiple="multiple" @change="getFile(4,'发票反面')" >
                     <img :src="phone4" alt="" id='phone4' class='imgs'>
                 </div>
+                <div class="clears"></div>
             </div>
         </div>
+        <div class="des">·请尽量拍下保修卡及上面IMEI设备号、包装盒上面IMEI设备号作为证明材料，以免影响审核通过。</div>
         <div class="clears"></div>
         <div class="loadBox">
             <div class="t">1&nbsp;其他证明材料</div>
